@@ -6,19 +6,40 @@
 @custom-variant dark (&:where(.dark, .dark *));
 @theme static {
   /*--*: initial;*/
-  --font-default: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-default: 'Inter';
+
   /* Global Fonts */
-  --default-font-family: var(--font-default);
-  --font-heading: 'Jost', sans-serif;
-  --font-nav: 'Open Sans', sans-serif;
+  --default-font-family: var(--smw-font-default);
+  --font-heading: 'Jost';
+  --font-nav: 'Open Sans';
+
   /* Global Colors */
-  --color-background: #ffffff;
-  --color-default: #111827;
-  --color-heading: #00395d;
-  --color-accent: #1d4ed8;
-  --color-accent-hover: #1e40af;
-  --color-surface: #ffffff;
-  --color-contrast: #ffffff;
+  --color-background: #f9fafb; /* Light gray */
+  --color-surface: #ffffff; /* White */
+  --color-default: #6b7280; /* Neutral gray */
+  --color-heading: #1e3a8a; /* Dark blue */
+  --color-accent: #84cc16; /* Lime green */
+  --color-contrast: #ffffff; /* White */
+
+  /*Test Chroma*/
+  /*
+  --color-chroma: #84cc16;
+  --color-chroma-50: oklch(from var(--smw-color-chroma) calc(l + 0.4) calc(c * 0.5) h);
+  --color-chroma-100: oklch(from var(--smw-color-chroma) calc(l + 0.3) calc(c * 0.6) h);
+  --color-chroma-200: oklch(from var(--smw-color-chroma) calc(l + 0.2) calc(c * 0.7) h);
+  --color-chroma-300: oklch(from var(--smw-color-chroma) calc(l + 0.1) calc(c * 0.8) h);
+  --color-chroma-400: oklch(from var(--smw-color-chroma) calc(l + 0.05) calc(c * 0.9) h);
+  --color-chroma-500: #84cc16;
+  */
+  /* Accent: Darker shades */
+  /*
+  --color-chroma-600: oklch(from var(--smw-color-chroma) calc(l - 0.1) calc(c * 1.1) h);
+  --color-chroma-700: oklch(from var(--smw-color-chroma) calc(l - 0.2) calc(c * 1.2) h);
+  --color-chroma-800: oklch(from var(--smw-color-chroma) calc(l - 0.3) calc(c * 1.3) h);
+  --color-chroma-900: oklch(from var(--smw-color-chroma) calc(l - 0.4) calc(c * 1.4) h);
+  --color-chroma-950: oklch(from var(--smw-color-chroma) calc(l - 0.5) calc(c * 1.5) h);
+  */
+
   /* Nav Colors */
   --color-nav: #111827;
   --color-nav-hover: #56b1e7;
@@ -27,23 +48,62 @@
   --color-nav-dropdown: #111827;
   --color-nav-dropdown-hover: #56b1e7;
 
-  /*Test Color Mix*/
-  --color-ben-500: #00a6f4; /* Hex color */
+  /* Modern browsers: Dynamic palette using oklch. Fallback colors (for older browsers) is handled by JS */
+  /* Default color palette Static*/
+  /* Default: Lighter shades */
+  --color-default-50: #f9fafb;
+  --color-default-100: #f3f4f6;
+  --color-default-200: #e5e7eb;
+  --color-default-300: #d1d5db;
+  --color-default-400: #9ca3af;
+  /* Default: Darker shades */
+  --color-default-600: #4b5563;
+  --color-default-700: #374151;
+  --color-default-800: #1f2937;
+  --color-default-900: #111827;
+  --color-default-950: #030712;
 
-  /* Lighter Shades */
-  --color-ben-50: color-mix(in srgb, var(--color-ben-500), white 90%);
-  --color-ben-100: color-mix(in srgb, var(--color-ben-500), white 80%);
-  --color-ben-200: color-mix(in srgb, var(--color-ben-500), white 60%);
-  --color-ben-300: color-mix(in srgb, var(--color-ben-500), white 40%);
-  --color-ben-400: color-mix(in srgb, var(--color-ben-500), white 20%);
+  /* Accent color palette */
+  /* Accent: Lighter shades */
+  --color-accent-50: oklch(from var(--smw-color-accent) calc(l + 0.4) calc(c * 0.5) h);
+  --color-accent-100: oklch(from var(--smw-color-accent) calc(l + 0.3) calc(c * 0.6) h);
+  --color-accent-200: oklch(from var(--smw-color-accent) calc(l + 0.2) calc(c * 0.7) h);
+  --color-accent-300: oklch(from var(--smw-color-accent) calc(l + 0.1) calc(c * 0.8) h);
+  --color-accent-400: oklch(from var(--smw-color-accent) calc(l + 0.05) calc(c * 0.9) h);
+  /* Accent: Darker shades */
+  --color-accent-600: oklch(from var(--smw-color-accent) calc(l - 0.1) calc(c * 1.1) h);
+  --color-accent-700: oklch(from var(--smw-color-accent) calc(l - 0.2) calc(c * 1.2) h);
+  --color-accent-800: oklch(from var(--smw-color-accent) calc(l - 0.3) calc(c * 1.3) h);
+  --color-accent-900: oklch(from var(--smw-color-accent) calc(l - 0.4) calc(c * 1.4) h);
+  --color-accent-950: oklch(from var(--smw-color-accent) calc(l - 0.5) calc(c * 1.5) h);
 
-  /* Darker Shades */
-  --color-ben-600: color-mix(in srgb, var(--color-ben-500), black 20%);
-  --color-ben-700: color-mix(in srgb, var(--color-ben-500), black 40%);
-  --color-ben-800: color-mix(in srgb, var(--color-ben-500), black 60%);
-  --color-ben-900: color-mix(in srgb, var(--color-ben-500), black 80%);
-  --color-ben-950: color-mix(in srgb, var(--color-ben-500), black 90%);
+  /* Heading color palette */
+  /* Heading: Lighter shades */
+  /*
+  --color-heading-50: oklch(from var(--smw-color-heading) calc(l + 0.4) calc(c * 0.5) h);
+  --color-heading-100: oklch(from var(--smw-color-heading) calc(l + 0.3) calc(c * 0.6) h);
+  --color-heading-200: oklch(from var(--smw-color-heading) calc(l + 0.2) calc(c * 0.7) h);
+  --color-heading-300: oklch(from var(--smw-color-heading) calc(l + 0.1) calc(c * 0.8) h);
+  --color-heading-400: oklch(from var(--smw-color-heading) calc(l + 0.05) calc(c * 0.9) h);
+  */
+  /* Heading: Darker shades */
+  /*
+  --color-heading-600: oklch(from var(--smw-color-heading) calc(l - 0.1) calc(c * 1.1) h);
+  --color-heading-700: oklch(from var(--smw-color-heading) calc(l - 0.2) calc(c * 1.2) h);
+  --color-heading-800: oklch(from var(--smw-color-heading) calc(l - 0.3) calc(c * 1.3) h);
+  --color-heading-900: oklch(from var(--smw-color-heading) calc(l - 0.4) calc(c * 1.4) h);
+  --color-heading-950: oklch(from var(--smw-color-heading) calc(l - 0.5) calc(c * 1.5) h);
+  */
 }
+
+@layer base {
+  [role='button'],
+  button,
+  select {
+    cursor: pointer;
+  }
+}
+
 @layer components {
   .light-background {
     --color-background: #ffffff;
@@ -51,12 +111,21 @@
   }
 
   .dark-background {
-    --color-background: #00395d;
-    --color-default: #ffffff;
-    --color-heading: #ffffff;
-    --color-accent: #1d4ed8;
-    --color-accent-hover: #1e40af;
-    --color-surface: #2b75a2;
-    --color-contrast: #ffffff;
+    --smw-color-background: #1e3a8a; /* Dark Blue */
+    --smw-color-surface: #2b75a2; /* White */
+    --smw-color-default: #ffffff; /* Neutral gray */
+    --smw-color-heading: #ffffff; /* Dark blue */
+    --smw-color-accent: #84cc16; /* Lime green */
+    --smw-color-contrast: #ffffff; /* White */
   }
 }
+
+/*
+Note: Tooltip doesn't have prefix smw: that can be changed in the node_modules/flowbite/plugin.js
+
+Color palette needs colorjs.io instead of Chroma.js
+
+node_modules file changes after installation:
+line 502: node_modules\tailwindcss\index.css
+  change --default-font-family,  --smw-default-font-family,
+*/

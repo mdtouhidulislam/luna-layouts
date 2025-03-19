@@ -1,0 +1,300 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    <link href="../input.css" rel="stylesheet" />
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+  <body>
+    <button id="theme-toggle" type="button" class="smw:rounded-lg smw:p-2.5 smw:text-sm smw:text-gray-500 smw:hover:bg-gray-100 smw:focus:ring-4 smw:focus:ring-gray-200 smw:focus:outline-none smw:dark:text-gray-400 smw:dark:hover:bg-gray-700 smw:dark:focus:ring-gray-700">
+      <svg id="theme-toggle-dark-icon" class="smw:hidden smw:h-5 smw:w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+      <svg id="theme-toggle-light-icon" class="smw:hidden smw:h-5 smw:w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+    </button>
+    <!-- All LunaSoft Software Layout Starts here -->
+    <br />
+    <h3>Color Palette</h3>
+    <br />
+    <hr />
+    <br />
+    <h4>TW Default</h4>
+    <div class="smw:mx-auto smw:inline-grid smw:max-w-lg smw:grid-cols-1 smw:justify-center smw:gap-3 smw:*:*:first:size-9 smw:*:*:first:rounded-md smw:*:*:first:inset-ring smw:*:*:first:inset-ring-black/5 smw:sm:grid-cols-11 smw:sm:flex-row smw:sm:*:*:first:aspect-square smw:sm:*:*:first:w-full">
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-lime-50"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">50</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-lime-100"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">100</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-lime-200"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">200</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-lime-300"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">300</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-lime-400"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">400</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-lime-500"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">500</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-lime-600"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">600</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-lime-700"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">700</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-lime-800"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">800</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-lime-900"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">900</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-lime-950"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">950</p>
+      </div>
+    </div>
+    <br />
+    <h4>Accent CSS Oklch</h4>
+    <div class="smw:mx-auto smw:inline-grid smw:max-w-lg smw:grid-cols-1 smw:justify-center smw:gap-3 smw:*:*:first:size-9 smw:*:*:first:rounded-md smw:*:*:first:inset-ring smw:*:*:first:inset-ring-black/5 smw:sm:grid-cols-11 smw:sm:flex-row smw:sm:*:*:first:aspect-square smw:sm:*:*:first:w-full">
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-accent-50"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">50</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-accent-100"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">100</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-accent-200"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">200</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-accent-300"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">300</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-accent-400"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">400</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-accent"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">500</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-accent-600"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">600</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-accent-700"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">700</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-accent-800"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">800</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-accent-900"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">900</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-accent-950"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">950</p>
+      </div>
+    </div>
+    <br />
+    <h4>Chroma</h4>
+    <div class="smw:mx-auto smw:inline-grid smw:max-w-lg smw:grid-cols-1 smw:justify-center smw:gap-3 smw:*:*:first:size-9 smw:*:*:first:rounded-md smw:*:*:first:inset-ring smw:*:*:first:inset-ring-black/5 smw:sm:grid-cols-11 smw:sm:flex-row smw:sm:*:*:first:aspect-square smw:sm:*:*:first:w-full">
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-chroma-50"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">50</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-chroma-100"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">100</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-chroma-200"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">200</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-chroma-300"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">300</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-chroma-400"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">400</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-chroma-500"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">500</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-chroma-600"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">600</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-chroma-700"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">700</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-chroma-800"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">800</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-chroma-900"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">900</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-chroma-950"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">950</p>
+      </div>
+    </div>
+    <br />
+    <h4>Default</h4>
+    <div class="smw:mx-auto smw:inline-grid smw:max-w-lg smw:grid-cols-1 smw:justify-center smw:gap-3 smw:*:*:first:size-9 smw:*:*:first:rounded-md smw:*:*:first:inset-ring smw:*:*:first:inset-ring-black/5 smw:sm:grid-cols-11 smw:sm:flex-row smw:sm:*:*:first:aspect-square smw:sm:*:*:first:w-full">
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-default-50"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">50</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-default-100"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">100</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-default-200"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">200</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-default-300"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">300</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-default-400"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">400</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-default"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">500</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-default-600"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">600</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-default-700"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">700</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-default-800"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">800</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-default-900"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">900</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-default-950"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">950</p>
+      </div>
+    </div>
+    <br />
+    <h4>Heading</h4>
+    <div class="smw:mx-auto smw:inline-grid smw:max-w-lg smw:grid-cols-1 smw:justify-center smw:gap-3 smw:*:*:first:size-9 smw:*:*:first:rounded-md smw:*:*:first:inset-ring smw:*:*:first:inset-ring-black/5 smw:sm:grid-cols-11 smw:sm:flex-row smw:sm:*:*:first:aspect-square smw:sm:*:*:first:w-full">
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-heading-50"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">50</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-heading-100"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">100</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-heading-200"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">200</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-heading-300"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">300</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-heading-400"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">400</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-heading"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">500</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-heading-600"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">600</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-heading-700"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">700</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-heading-800"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">800</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-heading-900"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">900</p>
+      </div>
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-heading-950"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">950</p>
+      </div>
+    </div>
+    <br />
+    <h4>Background</h4>
+    <div class="smw:mx-auto smw:inline-grid smw:max-w-lg smw:grid-cols-1 smw:justify-center smw:gap-3 smw:*:*:first:size-9 smw:*:*:first:rounded-md smw:*:*:first:inset-ring smw:*:*:first:inset-ring-black/5 smw:sm:grid-cols-11 smw:sm:flex-row smw:sm:*:*:first:aspect-square smw:sm:*:*:first:w-full">
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-background"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">50</p>
+      </div>
+    </div>
+    <br />
+    <h4>Surface</h4>
+    <div class="smw:mx-auto smw:inline-grid smw:max-w-lg smw:grid-cols-1 smw:justify-center smw:gap-3 smw:*:*:first:size-9 smw:*:*:first:rounded-md smw:*:*:first:inset-ring smw:*:*:first:inset-ring-black/5 smw:sm:grid-cols-11 smw:sm:flex-row smw:sm:*:*:first:aspect-square smw:sm:*:*:first:w-full">
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-surface"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">50</p>
+      </div>
+    </div>
+    <br />
+    <h4>contrast</h4>
+    <div class="smw:mx-auto smw:inline-grid smw:max-w-lg smw:grid-cols-1 smw:justify-center smw:gap-3 smw:*:*:first:size-9 smw:*:*:first:rounded-md smw:*:*:first:inset-ring smw:*:*:first:inset-ring-black/5 smw:sm:grid-cols-11 smw:sm:flex-row smw:sm:*:*:first:aspect-square smw:sm:*:*:first:w-full">
+      <div class="smw:flex smw:items-center smw:gap-1.5 smw:sm:flex-col">
+        <div class="smw:bg-contrast"></div>
+        <p class="smw:text-center smw:font-mono smw:text-xs smw:text-gray-600 smw:dark:text-gray-400">50</p>
+      </div>
+    </div>
+    <br />
+    <br />
+    <hr />
+    <br />
+
+    <script type="module" src="../main.js"></script>
+  </body>
+</html>
