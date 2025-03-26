@@ -16,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
 // Using component classes
 import Tooltip from 'flowbite/lib/esm/components/tooltip';
 import Dropdown from 'flowbite/lib/esm/components/dropdown';
+import Collapse from 'flowbite/lib/esm/components/Collapse';
+
 // Create a custom wrapper for the Flowbite component that adds the prefix dynamically.
 class CustomTooltip extends Tooltip {
   show() {
@@ -46,6 +48,19 @@ class CustomDropdown extends Dropdown {
     super.hide(); // Call the original hide method
   }
 }
+class CustomCollapse extends Collapse {
+  show() {
+    // Remove 'smw:hidden' to make the element visible
+    this._targetEl.classList.remove('smw:hidden');
+    super.show(); // Call the parent class's show method
+  }
+
+  hide() {
+    // Add 'smw:hidden' to hide the element
+    this._targetEl.classList.add('smw:hidden');
+    super.hide(); // Call the parent class's hide method
+  }
+}
 document.addEventListener('DOMContentLoaded', () => {
   // Initialize tooltips
   document.querySelectorAll('[data-tooltip-target]').forEach((triggerEl) => {
@@ -61,6 +76,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropdownEl = document.getElementById(dropdownId);
     if (dropdownEl) {
       new CustomDropdown(dropdownEl, triggerEl);
+    }
+  });
+  // Initialize collapse
+  document.querySelectorAll('[data-collapse-toggle]').forEach((triggerEl) => {
+    const collapseId = triggerEl.getAttribute('data-collapse-toggle');
+    const collapseEl = document.getElementById(collapseId);
+    if (collapseEl) {
+      new CustomCollapse(collapseEl, triggerEl); // Use the correct class name (Collapse)
     }
   });
 });
@@ -210,41 +233,43 @@ document.addEventListener('DOMContentLoaded', function () {
 /*
 Custom Components
 */
-var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+document.addEventListener('DOMContentLoaded', () => {
+  var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+  var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
 
-// Change the icons inside the button based on previous settings
-if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-  themeToggleLightIcon.classList.remove('smw:hidden');
-} else {
-  themeToggleDarkIcon.classList.remove('smw:hidden');
-}
-
-var themeToggleBtn = document.getElementById('theme-toggle');
-
-themeToggleBtn.addEventListener('click', function () {
-  // toggle icons inside button
-  themeToggleDarkIcon.classList.toggle('smw:hidden');
-  themeToggleLightIcon.classList.toggle('smw:hidden');
-
-  // if set via local storage previously
-  if (localStorage.getItem('color-theme')) {
-    if (localStorage.getItem('color-theme') === 'light') {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('color-theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('color-theme', 'light');
-    }
-
-    // if NOT set via local storage previously
+  // Change the icons inside the button based on previous settings
+  if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    themeToggleLightIcon.classList.remove('smw:hidden');
   } else {
-    if (document.documentElement.classList.contains('dark')) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('color-theme', 'light');
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('color-theme', 'dark');
-    }
+    themeToggleDarkIcon.classList.remove('smw:hidden');
   }
+
+  var themeToggleBtn = document.getElementById('theme-toggle');
+
+  themeToggleBtn.addEventListener('click', function () {
+    // toggle icons inside button
+    themeToggleDarkIcon.classList.toggle('smw:hidden');
+    themeToggleLightIcon.classList.toggle('smw:hidden');
+
+    // if set via local storage previously
+    if (localStorage.getItem('color-theme')) {
+      if (localStorage.getItem('color-theme') === 'light') {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      }
+
+      // if NOT set via local storage previously
+    } else {
+      if (document.documentElement.classList.contains('dark')) {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('color-theme', 'light');
+      } else {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('color-theme', 'dark');
+      }
+    }
+  });
 });

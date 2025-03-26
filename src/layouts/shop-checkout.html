@@ -1,0 +1,730 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="../input.css" rel="stylesheet" />
+    <script>
+      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    </script>
+  </head>
+  <body>
+    <nav class="smw:bg-white smw:antialiased smw:dark:bg-default-800">
+      <div class="smw:mx-auto smw:max-w-screen-xl smw:px-4 smw:py-4 smw:2xl:px-0">
+        <div class="smw:flex smw:items-center smw:justify-between">
+          <div class="smw:flex smw:items-center smw:space-x-8">
+            <div class="smw:shrink-0">
+              <a href="#" title="" class="">
+                <img class="smw:block smw:h-8 smw:w-auto smw:dark:hidden" src="../images/Logo-Black.png" alt="" />
+                <img class="smw:hidden smw:h-8 smw:w-auto smw:dark:block" src="../images/Logo-Black.png" alt="" />
+              </a>
+            </div>
+
+            <ul class="smw:hidden smw:items-center smw:justify-start smw:gap-6 smw:py-3 smw:sm:justify-center smw:md:gap-8 smw:lg:flex">
+              <li>
+                <a href="#" title="" class="smw:hover:text-accent-700 smw:dark:hover:text-accent smw:flex smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> Home </a>
+              </li>
+              <li class="shrink-0">
+                <a href="#" title="" class="smw:hover:text-accent-700 smw:dark:hover:text-accent smw:flex smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> Best Sellers </a>
+              </li>
+              <li class="shrink-0">
+                <a href="#" title="" class="smw:hover:text-accent-700 smw:dark:hover:text-accent smw:flex smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> Gift Ideas </a>
+              </li>
+              <li class="shrink-0">
+                <a href="#" title="" class="smw:hover:text-accent-700 smw:dark:hover:text-accent smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> Today's Deals </a>
+              </li>
+              <li class="shrink-0">
+                <a href="#" title="" class="smw:hover:text-accent-700 smw:dark:hover:text-accent smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> Sell </a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="smw:flex smw:items-center smw:lg:space-x-2">
+            <button id="myCartDropdownButton1" data-dropdown-toggle="myCartDropdown1" type="button" class="smw:inline-flex smw:items-center smw:justify-center smw:rounded-lg smw:p-2 smw:text-sm smw:leading-none smw:font-medium smw:text-default-900 smw:hover:bg-default-100 smw:dark:text-white smw:dark:hover:bg-default-700">
+              <span class="smw:sr-only"> Cart </span>
+              <svg class="smw:h-5 smw:w-5 smw:lg:me-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+              </svg>
+              <span class="smw:hidden smw:sm:flex">My Cart</span>
+              <svg class="smw:ms-1 smw:hidden smw:h-4 smw:w-4 smw:text-default-900 smw:sm:flex smw:dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7" />
+              </svg>
+            </button>
+
+            <div id="myCartDropdown1" class="smw:z-10 smw:mx-auto smw:hidden smw:max-w-sm smw:space-y-4 smw:overflow-hidden smw:rounded-lg smw:bg-white smw:p-4 smw:antialiased smw:shadow-lg smw:dark:bg-default-800">
+              <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4 smw:border-b smw:border-default-200 smw:pb-4">
+                <dt class="smw:leading-none smw:font-semibold smw:text-default-900">Your shopping cart</dt>
+                <dd class="smw:leading-none smw:text-default">4 items</dd>
+              </dl>
+              <div class="smw:grid smw:grid-cols-2">
+                <div>
+                  <a href="#" class="smw:truncate smw:text-sm smw:leading-none smw:font-semibold smw:text-default-900 smw:hover:underline smw:dark:text-white">Apple iPhone 15</a>
+                  <p class="smw:mt-0.5 smw:truncate smw:text-sm smw:font-normal smw:text-default-500 smw:dark:text-default-400">$599</p>
+                </div>
+
+                <div class="smw:flex smw:items-center smw:justify-end smw:gap-6">
+                  <p class="smw:text-sm smw:leading-none smw:font-normal smw:text-default-500 smw:dark:text-default-400">Qty: 1</p>
+
+                  <button data-tooltip-target="tooltipRemoveItem1a" type="button" class="smw:text-red-600 smw:hover:text-red-700 smw:dark:text-red-500 smw:dark:hover:text-red-600">
+                    <span class="smw:sr-only"> Remove </span>
+                    <svg class="smw:h-4 smw:w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div id="tooltipRemoveItem1a" role="tooltip" class="tooltip smw:invisible smw:absolute smw:z-10 smw:inline-block smw:rounded-lg smw:bg-default-900 smw:px-3 smw:py-2 smw:text-sm smw:font-medium smw:text-white smw:opacity-0 smw:shadow-sm smw:transition-opacity smw:duration-300 smw:dark:bg-default-700">
+                    Remove item
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="smw:grid smw:grid-cols-2">
+                <div>
+                  <a href="#" class="smw:truncate smw:text-sm smw:leading-none smw:font-semibold smw:text-default-900 smw:hover:underline smw:dark:text-white">Apple iPad Air</a>
+                  <p class="smw:mt-0.5 smw:truncate smw:text-sm smw:font-normal smw:text-default-500 smw:dark:text-default-400">$499</p>
+                </div>
+
+                <div class="smw:flex smw:items-center smw:justify-end smw:gap-6">
+                  <p class="smw:text-sm smw:leading-none smw:font-normal smw:text-default-500 smw:dark:text-default-400">Qty: 1</p>
+
+                  <button data-tooltip-target="tooltipRemoveItem2a" type="button" class="smw:text-red-600 smw:hover:text-red-700 smw:dark:text-red-500 smw:dark:hover:text-red-600">
+                    <span class="smw:sr-only"> Remove </span>
+                    <svg class="smw:h-4 smw:w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div id="tooltipRemoveItem2a" role="tooltip" class="tooltip smw:invisible smw:absolute smw:z-10 smw:inline-block smw:rounded-lg smw:bg-default-900 smw:px-3 smw:py-2 smw:text-sm smw:font-medium smw:text-white smw:opacity-0 smw:shadow-sm smw:transition-opacity smw:duration-300 smw:dark:bg-default-700">
+                    Remove item
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="smw:grid smw:grid-cols-2">
+                <div>
+                  <a href="#" class="smw:truncate smw:text-sm smw:leading-none smw:font-semibold smw:text-default-900 smw:hover:underline smw:dark:text-white">Apple Watch SE</a>
+                  <p class="smw:mt-0.5 smw:truncate smw:text-sm smw:font-normal smw:text-default-500 smw:dark:text-default-400">$598</p>
+                </div>
+
+                <div class="smw:flex smw:items-center smw:justify-end smw:gap-6">
+                  <p class="smw:text-sm smw:leading-none smw:font-normal smw:text-default-500 smw:dark:text-default-400">Qty: 2</p>
+
+                  <button data-tooltip-target="tooltipRemoveItem3b" type="button" class="smw:text-red-600 smw:hover:text-red-700 smw:dark:text-red-500 smw:dark:hover:text-red-600">
+                    <span class="smw:sr-only"> Remove </span>
+                    <svg class="smw:h-4 smw:w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div id="tooltipRemoveItem3b" role="tooltip" class="tooltip smw:invisible smw:absolute smw:z-10 smw:inline-block smw:rounded-lg smw:bg-default-900 smw:px-3 smw:py-2 smw:text-sm smw:font-medium smw:text-white smw:opacity-0 smw:shadow-sm smw:transition-opacity smw:duration-300 smw:dark:bg-default-700">
+                    Remove item
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="smw:grid smw:grid-cols-2">
+                <div>
+                  <a href="#" class="smw:truncate smw:text-sm smw:leading-none smw:font-semibold smw:text-default-900 smw:hover:underline smw:dark:text-white">Sony Playstation 5</a>
+                  <p class="smw:mt-0.5 smw:truncate smw:text-sm smw:font-normal smw:text-default-500 smw:dark:text-default-400">$799</p>
+                </div>
+
+                <div class="smw:flex smw:items-center smw:justify-end smw:gap-6">
+                  <p class="smw:text-sm smw:leading-none smw:font-normal smw:text-default-500 smw:dark:text-default-400">Qty: 1</p>
+
+                  <button data-tooltip-target="tooltipRemoveItem4b" type="button" class="smw:text-red-600 smw:hover:text-red-700 smw:dark:text-red-500 smw:dark:hover:text-red-600">
+                    <span class="smw:sr-only"> Remove </span>
+                    <svg class="smw:h-4 smw:w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div id="tooltipRemoveItem4b" role="tooltip" class="tooltip smw:invisible smw:absolute smw:z-10 smw:inline-block smw:rounded-lg smw:bg-default-900 smw:px-3 smw:py-2 smw:text-sm smw:font-medium smw:text-white smw:opacity-0 smw:shadow-sm smw:transition-opacity smw:duration-300 smw:dark:bg-default-700">
+                    Remove item
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="smw:grid smw:grid-cols-2">
+                <div>
+                  <a href="#" class="smw:truncate smw:text-sm smw:leading-none smw:font-semibold smw:text-default-900 smw:hover:underline smw:dark:text-white">Apple iMac 20"</a>
+                  <p class="smw:mt-0.5 smw:truncate smw:text-sm smw:font-normal smw:text-default-500 smw:dark:text-default-400">$8,997</p>
+                </div>
+
+                <div class="smw:flex smw:items-center smw:justify-end smw:gap-6">
+                  <p class="smw:text-sm smw:leading-none smw:font-normal smw:text-default-500 smw:dark:text-default-400">Qty: 3</p>
+
+                  <button data-tooltip-target="tooltipRemoveItem5b" type="button" class="smw:text-red-600 smw:hover:text-red-700 smw:dark:text-red-500 smw:dark:hover:text-red-600">
+                    <span class="smw:sr-only"> Remove </span>
+                    <svg class="smw:h-4 smw:w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                      <path fill-rule="evenodd" d="M2 12a10 10 0 1 1 20 0 10 10 0 0 1-20 0Zm7.7-3.7a1 1 0 0 0-1.4 1.4l2.3 2.3-2.3 2.3a1 1 0 1 0 1.4 1.4l2.3-2.3 2.3 2.3a1 1 0 0 0 1.4-1.4L13.4 12l2.3-2.3a1 1 0 0 0-1.4-1.4L12 10.6 9.7 8.3Z" clip-rule="evenodd" />
+                    </svg>
+                  </button>
+                  <div id="tooltipRemoveItem5b" role="tooltip" class="tooltip smw:invisible smw:absolute smw:z-10 smw:inline-block smw:rounded-lg smw:bg-default-900 smw:px-3 smw:py-2 smw:text-sm smw:font-medium smw:text-white smw:opacity-0 smw:shadow-sm smw:transition-opacity smw:duration-300 smw:dark:bg-default-700">
+                    Remove item
+                    <div class="tooltip-arrow" data-popper-arrow></div>
+                  </div>
+                </div>
+              </div>
+
+              <a href="#" title="" class="smw:bg-accent-700 smw:hover:bg-accent-800 smw:focus:ring-accent-300 smw:dark:bg-accent-600 smw:dark:hover:bg-accent-700 smw:dark:focus:ring-accent-800 smw:me-2 smw:inline-flex smw:w-full smw:items-center smw:justify-center smw:rounded-lg smw:px-5 smw:py-2.5 smw:text-sm smw:font-medium smw:text-white smw:focus:ring-4 smw:focus:outline-none" role="button"> See your Cart </a>
+            </div>
+
+            <button id="userDropdownButton1" data-dropdown-toggle="userDropdown1" type="button" class="smw:inline-flex smw:items-center smw:justify-center smw:rounded-lg smw:p-2 smw:text-sm smw:leading-none smw:font-medium smw:text-default-900 smw:hover:bg-default-100 smw:dark:text-white smw:dark:hover:bg-default-700">
+              <svg class="smw:me-1 smw:h-5 smw:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-width="2" d="M7 17v1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1a3 3 0 0 0-3-3h-4a3 3 0 0 0-3 3Zm8-9a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+              </svg>
+              Account
+              <svg class="smw:ms-1 smw:h-4 smw:w-4 smw:text-default-900 smw:dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7" />
+              </svg>
+            </button>
+
+            <div id="userDropdown1" class="smw:z-10 smw:hidden smw:w-56 smw:divide-y smw:divide-default-100 smw:overflow-hidden smw:overflow-y-auto smw:rounded-lg smw:bg-white smw:antialiased smw:shadow smw:dark:divide-default-600 smw:dark:bg-default-700">
+              <ul class="smw:p-2 smw:text-start smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white">
+                <li><a href="#" title="" class="smw:inline-flex smw:w-full smw:items-center smw:gap-2 smw:rounded-md smw:px-3 smw:py-2 smw:text-sm smw:hover:bg-default-100 smw:dark:hover:bg-default-600"> My Account </a></li>
+                <li><a href="#" title="" class="smw:inline-flex smw:w-full smw:items-center smw:gap-2 smw:rounded-md smw:px-3 smw:py-2 smw:text-sm smw:hover:bg-default-100 smw:dark:hover:bg-default-600"> My Orders </a></li>
+                <li><a href="#" title="" class="smw:inline-flex smw:w-full smw:items-center smw:gap-2 smw:rounded-md smw:px-3 smw:py-2 smw:text-sm smw:hover:bg-default-100 smw:dark:hover:bg-default-600"> Settings </a></li>
+                <li><a href="#" title="" class="smw:inline-flex smw:w-full smw:items-center smw:gap-2 smw:rounded-md smw:px-3 smw:py-2 smw:text-sm smw:hover:bg-default-100 smw:dark:hover:bg-default-600"> Favourites </a></li>
+                <li><a href="#" title="" class="smw:inline-flex smw:w-full smw:items-center smw:gap-2 smw:rounded-md smw:px-3 smw:py-2 smw:text-sm smw:hover:bg-default-100 smw:dark:hover:bg-default-600"> Delivery Addresses </a></li>
+                <li><a href="#" title="" class="smw:inline-flex smw:w-full smw:items-center smw:gap-2 smw:rounded-md smw:px-3 smw:py-2 smw:text-sm smw:hover:bg-default-100 smw:dark:hover:bg-default-600"> Billing Data </a></li>
+              </ul>
+
+              <div class="smw:p-2 smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white">
+                <a href="#" title="" class="smw:inline-flex smw:w-full smw:items-center smw:gap-2 smw:rounded-md smw:px-3 smw:py-2 smw:text-sm smw:hover:bg-default-100 smw:dark:hover:bg-default-600"> Sign Out </a>
+              </div>
+            </div>
+
+            <button id="theme-toggle" type="button" class="smw:rounded-lg smw:p-2 smw:text-xs smw:text-default smw:hover:bg-default-100 smw:focus:ring-4 smw:focus:ring-default-200 smw:focus:outline-none smw:dark:text-default-400 smw:dark:hover:bg-default-700 smw:dark:focus:ring-default-700">
+              <svg id="theme-toggle-dark-icon" class="smw:hidden smw:h-5 smw:w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
+              <svg id="theme-toggle-light-icon" class="smw:hidden smw:h-5 smw:w-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path></svg>
+            </button>
+
+            <button type="button" data-collapse-toggle="ecommerce-navbar-menu-1" aria-controls="ecommerce-navbar-menu-1" aria-expanded="false" class="smw:inline-flex smw:items-center smw:justify-center smw:rounded-md smw:p-2 smw:text-default-900 smw:hover:bg-default-100 smw:lg:hidden smw:dark:text-white smw:dark:hover:bg-default-700">
+              <span class="smw:sr-only"> Open Menu </span>
+              <svg class="smw:h-5 smw:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M5 7h14M5 12h14M5 17h14" />
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div id="ecommerce-navbar-menu-1" class="smw:mt-4 smw:hidden smw:rounded-lg smw:border smw:border-default-200 smw:bg-default-50 smw:px-4 smw:py-3 smw:dark:border-default-600 smw:dark:bg-default-700">
+          <ul class="smw:space-y-3 smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white">
+            <li>
+              <a href="#" class="smw:hover:text-accent-700 smw:dark:hover:text-accent">Home</a>
+            </li>
+            <li>
+              <a href="#" class="smw:hover:text-accent-700 smw:dark:hover:text-accent">Best Sellers</a>
+            </li>
+            <li>
+              <a href="#" class="smw:hover:text-accent-700 smw:dark:hover:text-accent">Gift Ideas</a>
+            </li>
+            <li>
+              <a href="#" class="smw:hover:text-accent-700 smw:dark:hover:text-accent">Games</a>
+            </li>
+            <li>
+              <a href="#" class="smw:hover:text-accent-700 smw:dark:hover:text-accent">Electronics</a>
+            </li>
+            <li>
+              <a href="#" class="smw:hover:text-accent-700 smw:dark:hover:text-accent">Home & Garden</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- All LunaSoft Software Layout Starts here -->
+    <section class="smw:bg-background smw:py-8 smw:antialiased smw:md:py-12 smw:dark:bg-default-900">
+      <div class="smw:mx-auto smw:max-w-screen-xl smw:px-4 smw:2xl:px-0">
+        <!-- Heading & Filters -->
+        <div class="smw:mb-4 smw:items-end smw:justify-between smw:space-y-4 smw:sm:flex smw:sm:space-y-0 smw:md:mb-8">
+          <div>
+            <nav class="flex" aria-label="Breadcrumb">
+              <ol class="smw:inline-flex smw:items-center smw:space-x-1 smw:md:space-x-2 smw:rtl:space-x-reverse">
+                <li class="smw:inline-flex smw:items-center">
+                  <a href="#" class="smw:hover:text-accent-600 smw:inline-flex smw:items-center smw:text-sm smw:font-medium smw:text-default-700 smw:dark:text-default-400 smw:dark:hover:text-white">
+                    <svg class="smw:me-2.5 smw:h-3 smw:w-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="m19.707 9.293-2-2-7-7a1 1 0 0 0-1.414 0l-7 7-2 2a1 1 0 0 0 1.414 1.414L2 10.414V18a2 2 0 0 0 2 2h3a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h3a2 2 0 0 0 2-2v-7.586l.293.293a1 1 0 0 0 1.414-1.414Z" />
+                    </svg>
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <div class="smw:flex smw:items-center">
+                    <svg class="smw:h-5 smw:w-5 smw:text-default-400 smw:rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
+                    </svg>
+                    <a href="#" class="smw:hover:text-accent-600 smw:ms-1 smw:text-sm smw:font-medium smw:text-default-700 smw:md:ms-2 smw:dark:text-default-400 smw:dark:hover:text-white">Shop</a>
+                  </div>
+                </li>
+                <li aria-current="page">
+                  <div class="smw:flex smw:items-center">
+                    <svg class="smw:h-5 smw:w-5 smw:text-default-400 smw:rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7" />
+                    </svg>
+                    <span class="smw:ms-1 smw:text-sm smw:font-medium smw:text-default smw:md:ms-2 smw:dark:text-default-400">Checkout</span>
+                  </div>
+                </li>
+              </ol>
+            </nav>
+            <h2 class="smw:mt-3 smw:text-xl smw:font-semibold smw:text-heading smw:sm:text-2xl smw:dark:text-white">Checkout</h2>
+          </div>
+          <!--
+          <div class="smw:flex smw:items-center smw:space-x-4">
+            <a href="" class="smw:hover:text-accent-700 smw:flex smw:w-auto smw:items-center smw:justify-center smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:px-5 smw:py-2.5 smw:text-sm smw:font-medium smw:text-default-900 smw:hover:bg-default-100 smw:focus:z-10 smw:focus:ring-4 smw:focus:ring-default-100 smw:focus:outline-none smw:sm:w-auto smw:dark:border-default-600 smw:dark:bg-default-800 smw:dark:text-default-400 smw:dark:hover:bg-default-700 smw:dark:hover:text-white smw:dark:focus:ring-default-700">
+              <svg class="smw:-ms-0.5 smw:me-2 smw:h-4 smw:w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+              </svg>
+              Save Cart
+            </a>
+          </div>
+          -->
+        </div>
+        <!-- Content Grid with Sidebar -->
+        <div class="smw:gap-8 smw:lg:flex">
+          <!-- Content goes here -->
+          <aside id="sidebar" class="smw:hidden smw:h-full smw:w-80 smw:flex-shrink-0 smw:overflow-y-auto smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:p-3 smw:shadow-sm smw:lg:block smw:dark:bg-default-800 smw:dark:border-default-700 smw:text-default-900">
+            <!-- Sidebar content goes here -->
+            <ul class="smw:space-y-2 smw:text-base smw:font-medium smw:dark:text-white">
+              <li>
+                <a href="#" class="smw:flex smw:items-center smw:w-full smw:cursor-pointer smw:rounded-lg smw:px-4 smw:py-2 smw:hover:bg-default-100 smw:hover:text-accent-700 smw:focus:text-accent-700 smw:focus:ring-2 smw:focus:ring-accent-700 smw:focus:outline-none smw:dark:hover:bg-default-600 smw:dark:hover:text-white smw:dark:focus:text-white smw:dark:focus:ring-default"> My Orders </a>
+              </li>
+              <li>
+                <a href="#" class="smw:flex smw:items-center smw:w-full smw:cursor-pointer smw:rounded-lg smw:px-4 smw:py-2 smw:hover:bg-default-100 smw:hover:text-accent-700 smw:focus:text-accent-700 smw:focus:ring-2 smw:focus:ring-accent-700 smw:focus:outline-none smw:dark:hover:bg-default-600 smw:dark:hover:text-white smw:dark:focus:text-white smw:dark:focus:ring-default"> Reviews </a>
+              </li>
+              <li>
+                <a href="#" class="smw:flex smw:items-center smw:w-full smw:cursor-pointer smw:rounded-lg smw:px-4 smw:py-2 smw:hover:bg-default-100 smw:hover:text-accent-700 smw:focus:text-accent-700 smw:focus:ring-2 smw:focus:ring-accent-700 smw:focus:outline-none smw:dark:hover:bg-default-600 smw:dark:hover:text-white smw:dark:focus:text-white smw:dark:focus:ring-default"> Settings </a>
+              </li>
+            </ul>
+          </aside>
+          <main class="smw:w-full">
+            <!--
+            <div x-data="{ products: Array(6).fill(0) }" class="smw:mb-4 smw:grid smw:gap-4 smw:sm:grid-cols-2 smw:md:mb-8 smw:lg:grid-cols-3">
+              <template x-for="(product, index) in products" :key="index"> </template>
+            </div>
+            -->
+            <ol class="smw:flex smw:w-full smw:items-center smw:text-center smw:text-sm smw:font-medium smw:text-default smw:sm:text-base smw:dark:text-default-400">
+              <li class="smw:text-accent-700 smw:dark:text-accent smw:flex smw:items-center smw:after:mx-6 smw:after:hidden smw:after:h-1 smw:after:w-full smw:after:border-1 smw:after:border-b smw:after:border-default-200 smw:sm:after:inline-block smw:sm:after:content-[''] smw:dark:after:border-default-700 smw:md:w-full smw:xl:after:mx-10">
+                <span class="smw:flex smw:items-center smw:after:mx-2 smw:after:text-default-200 smw:after:content-['/'] smw:dark:after:text-default smw:sm:after:hidden">
+                  <svg class="smw:me-2 smw:h-4 smw:w-4 smw:sm:h-5 smw:sm:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                  Cart
+                </span>
+              </li>
+
+              <li class="smw:text-accent-700 smw:dark:text-accent smw:flex smw:items-center smw:after:mx-6 smw:after:hidden smw:after:h-1 smw:after:w-full smw:after:border-1 smw:after:border-b smw:after:border-default-200 smw:sm:after:inline-block smw:sm:after:content-[''] smw:dark:after:border-default-700 smw:md:w-full smw:xl:after:mx-10">
+                <span class="smw:flex smw:items-center smw:after:mx-2 smw:after:text-default-200 smw:after:content-['/'] smw:dark:after:text-default smw:sm:after:hidden">
+                  <svg class="smw:me-2 smw:h-4 smw:w-4 smw:sm:h-5 smw:sm:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                  Checkout
+                </span>
+              </li>
+
+              <li class="smw:flex smw:shrink-0 smw:items-center">
+                <svg class="smw:me-2 smw:h-4 smw:w-4 smw:sm:h-5 smw:sm:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.5 11.5 11 14l4-4m6 2a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                </svg>
+                Order summary
+              </li>
+            </ol>
+            <div class="smw:mx-auto smw:mt-6 smw:flex-1 smw:space-y-6 smw:w-full">
+              <div class="smw:space-y-4 smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:p-4 smw:shadow-sm smw:sm:p-6 smw:dark:border-default-700 smw:dark:bg-default-800">
+                <div class="smw:space-y-4">
+                  <h2 class="smw:text-xl smw:font-semibold smw:text-default-900 smw:dark:text-white">Delivery Details</h2>
+
+                  <div class="smw:grid smw:grid-cols-1 smw:gap-4 smw:sm:grid-cols-2">
+                    <div>
+                      <label for="your_name" class="smw:mb-2 smw:block smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> Your name </label>
+                      <input type="text" id="your_name" class="smw:focus:border-accent smw:focus:ring-accent smw:dark:focus:border-accent smw:dark:focus:ring-accent smw:block smw:w-full smw:rounded-lg smw:border smw:border-default-300 smw:bg-default-50 smw:p-2.5 smw:text-sm smw:text-default-900 smw:dark:border-default-600 smw:dark:bg-default-700 smw:dark:text-white smw:dark:placeholder:text-default-400" placeholder="Bonnie Green" required />
+                    </div>
+
+                    <div>
+                      <label for="your_email" class="smw:mb-2 smw:block smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> Your email* </label>
+                      <input type="email" id="your_email" class="smw:focus:border-accent smw:focus:ring-accent smw:dark:focus:border-accent smw:dark:focus:ring-accent smw:block smw:w-full smw:rounded-lg smw:border smw:border-default-300 smw:bg-default-50 smw:p-2.5 smw:text-sm smw:text-default-900 smw:dark:border-default-600 smw:dark:bg-default-700 smw:dark:text-white smw:dark:placeholder:text-default-400" placeholder="name@flowbite.com" required />
+                    </div>
+
+                    <div>
+                      <div class="smw:mb-2 smw:flex smw:items-center smw:gap-2">
+                        <label for="select-country-input-3" class="smw:block smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> Country* </label>
+                      </div>
+                      <select id="select-country-input-3" class="smw:focus:border-accent smw:focus:ring-accent smw:dark:focus:border-accent smw:dark:focus:ring-accent smw:block smw:w-full smw:rounded-lg smw:border smw:border-default-300 smw:bg-default-50 smw:p-2.5 smw:text-sm smw:text-default-900 smw:dark:border-default-600 smw:dark:bg-default-700 smw:dark:text-white smw:dark:placeholder:text-default-400">
+                        <option selected>United States</option>
+                        <option value="AS">Australia</option>
+                        <option value="FR">France</option>
+                        <option value="ES">Spain</option>
+                        <option value="UK">United Kingdom</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <div class="smw:mb-2 smw:flex smw:items-center smw:gap-2">
+                        <label for="select-city-input-3" class="smw:block smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> City* </label>
+                      </div>
+                      <select id="select-city-input-3" class="smw:focus:border-accent smw:focus:ring-accent smw:dark:focus:border-accent smw:dark:focus:ring-accent smw:block smw:w-full smw:rounded-lg smw:border smw:border-default-300 smw:bg-default-50 smw:p-2.5 smw:text-sm smw:text-default-900 smw:dark:border-default-600 smw:dark:bg-default-700 smw:dark:text-white smw:dark:placeholder:text-default-400">
+                        <option selected>San Francisco</option>
+                        <option value="NY">New York</option>
+                        <option value="LA">Los Angeles</option>
+                        <option value="CH">Chicago</option>
+                        <option value="HU">Houston</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label for="phone-input-3" class="smw:mb-2 smw:block smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> Phone Number* </label>
+                      <div class="smw:flex smw:items-center">
+                        <button id="dropdown-phone-button-3" data-dropdown-toggle="dropdown-phone-3" class="smw:z-10 smw:inline-flex smw:shrink-0 smw:items-center smw:rounded-s-lg smw:border smw:border-default-300 smw:bg-default-100 smw:px-4 smw:py-2.5 smw:text-center smw:text-sm smw:font-medium smw:text-default-900 smw:hover:bg-default-200 smw:focus:ring-4 smw:focus:ring-default-100 smw:focus:outline-none smw:dark:border-default-600 smw:dark:bg-default-700 smw:dark:text-white smw:dark:hover:bg-default-600 smw:dark:focus:ring-default-700" type="button">
+                          <svg fill="none" aria-hidden="true" class="smw:me-2 smw:h-4 smw:w-4" viewBox="0 0 20 15">
+                            <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                            <mask id="a" style="mask-type: luminance" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+                              <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                            </mask>
+                            <g mask="url(#a)">
+                              <path fill="#D02F44" fill-rule="evenodd" d="M19.6.5H0v.933h19.6V.5zm0 1.867H0V3.3h19.6v-.933zM0 4.233h19.6v.934H0v-.934zM19.6 6.1H0v.933h19.6V6.1zM0 7.967h19.6V8.9H0v-.933zm19.6 1.866H0v.934h19.6v-.934zM0 11.7h19.6v.933H0V11.7zm19.6 1.867H0v.933h19.6v-.933z" clip-rule="evenodd" />
+                              <path fill="#46467F" d="M0 .5h8.4v6.533H0z" />
+                              <g filter="url(#filter0_d_343_121520)">
+                                <path
+                                  fill="url(#paint0_linear_343_121520)"
+                                  fill-rule="evenodd"
+                                  d="M1.867 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.866 0a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM7.467 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zM2.333 3.3a.467.467 0 100-.933.467.467 0 000 .933zm2.334-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.4.467a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm-2.334.466a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.466a.467.467 0 11-.933 0 .467.467 0 01.933 0zM1.4 4.233a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM6.533 4.7a.467.467 0 11-.933 0 .467.467 0 01.933 0zM7 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zM3.267 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0z"
+                                  clip-rule="evenodd"
+                                />
+                              </g>
+                            </g>
+                            <defs>
+                              <linearGradient id="paint0_linear_343_121520" x1=".933" x2=".933" y1="1.433" y2="6.1" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#fff" />
+                                <stop offset="1" stop-color="#F0F0F0" />
+                              </linearGradient>
+                              <filter id="filter0_d_343_121520" width="6.533" height="5.667" x=".933" y="1.433" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                <feOffset dy="1" />
+                                <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" />
+                                <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_343_121520" />
+                                <feBlend in="SourceGraphic" in2="effect1_dropShadow_343_121520" result="shape" />
+                              </filter>
+                            </defs>
+                          </svg>
+                          +1
+                          <svg class="smw:ms-2 smw:-me-0.5 smw:h-4 smw:w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 9-7 7-7-7" />
+                          </svg>
+                        </button>
+                        <div id="dropdown-phone-3" class="smw:z-10 smw:hidden smw:w-56 smw:divide-y smw:divide-default-100 smw:rounded-lg smw:bg-white smw:shadow smw:dark:bg-default-700">
+                          <ul class="smw:p-2 smw:text-sm smw:font-medium smw:text-default-700 smw:dark:text-default-200" aria-labelledby="dropdown-phone-button-2">
+                            <li>
+                              <button type="button" class="smw:inline-flex smw:w-full smw:rounded-md smw:px-3 smw:py-2 smw:text-sm smw:text-default smw:hover:bg-default-100 smw:hover:text-default-900 smw:dark:text-default-400 smw:dark:hover:bg-default-600 smw:dark:hover:text-white" role="menuitem">
+                                <span class="smw:inline-flex smw:items-center">
+                                  <svg fill="none" aria-hidden="true" class="smw:me-2 smw:h-4 smw:w-4" viewBox="0 0 20 15">
+                                    <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                    <mask id="a" style="mask-type: luminance" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+                                      <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                    </mask>
+                                    <g mask="url(#a)">
+                                      <path fill="#D02F44" fill-rule="evenodd" d="M19.6.5H0v.933h19.6V.5zm0 1.867H0V3.3h19.6v-.933zM0 4.233h19.6v.934H0v-.934zM19.6 6.1H0v.933h19.6V6.1zM0 7.967h19.6V8.9H0v-.933zm19.6 1.866H0v.934h19.6v-.934zM0 11.7h19.6v.933H0V11.7zm19.6 1.867H0v.933h19.6v-.933z" clip-rule="evenodd" />
+                                      <path fill="#46467F" d="M0 .5h8.4v6.533H0z" />
+                                      <g filter="url(#filter0_d_343_121520)">
+                                        <path
+                                          fill="url(#paint0_linear_343_121520)"
+                                          fill-rule="evenodd"
+                                          d="M1.867 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.866 0a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM7.467 1.9a.467.467 0 11-.934 0 .467.467 0 01.934 0zM2.333 3.3a.467.467 0 100-.933.467.467 0 000 .933zm2.334-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm1.4.467a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.934 0 .467.467 0 01.934 0zm-2.334.466a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.466a.467.467 0 11-.933 0 .467.467 0 01.933 0zM1.4 4.233a.467.467 0 100-.933.467.467 0 000 .933zm1.4.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zm1.4.467a.467.467 0 100-.934.467.467 0 000 .934zM6.533 4.7a.467.467 0 11-.933 0 .467.467 0 01.933 0zM7 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.933 0 .467.467 0 01.933 0zM3.267 6.1a.467.467 0 100-.933.467.467 0 000 .933zm-1.4-.467a.467.467 0 11-.934 0 .467.467 0 01.934 0z"
+                                          clip-rule="evenodd"
+                                        />
+                                      </g>
+                                    </g>
+                                    <defs>
+                                      <linearGradient id="paint0_linear_343_121520" x1=".933" x2=".933" y1="1.433" y2="6.1" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#fff" />
+                                        <stop offset="1" stop-color="#F0F0F0" />
+                                      </linearGradient>
+                                      <filter id="filter0_d_343_121520" width="6.533" height="5.667" x=".933" y="1.433" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                        <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                        <feOffset dy="1" />
+                                        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" />
+                                        <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_343_121520" />
+                                        <feBlend in="SourceGraphic" in2="effect1_dropShadow_343_121520" result="shape" />
+                                      </filter>
+                                    </defs>
+                                  </svg>
+                                  United States (+1)
+                                </span>
+                              </button>
+                            </li>
+                            <li>
+                              <button type="button" class="smw:inline-flex smw:w-full smw:rounded-md smw:px-3 smw:py-2 smw:text-sm smw:text-default smw:hover:bg-default-100 smw:hover:text-default-900 smw:dark:text-default-400 smw:dark:hover:bg-default-600 smw:dark:hover:text-white" role="menuitem">
+                                <span class="smw:inline-flex smw:items-center">
+                                  <svg class="smw:me-2 smw:h-4 smw:w-4" fill="none" viewBox="0 0 20 15">
+                                    <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                    <mask id="a" style="mask-type: luminance" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+                                      <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                    </mask>
+                                    <g mask="url(#a)">
+                                      <path fill="#0A17A7" d="M0 .5h19.6v14H0z" />
+                                      <path fill="#fff" fill-rule="evenodd" d="M-.898-.842L7.467 4.8V-.433h4.667V4.8l8.364-5.642L21.542.706l-6.614 4.46H19.6v4.667h-4.672l6.614 4.46-1.044 1.549-8.365-5.642v5.233H7.467V10.2l-8.365 5.642-1.043-1.548 6.613-4.46H0V5.166h4.672L-1.941.706-.898-.842z" clip-rule="evenodd" />
+                                      <path stroke="#DB1F35" stroke-linecap="round" stroke-width=".667" d="M13.067 4.933L21.933-.9M14.009 10.088l7.947 5.357M5.604 4.917L-2.686-.67M6.503 10.024l-9.189 6.093" />
+                                      <path fill="#E6273E" fill-rule="evenodd" d="M0 8.9h8.4v5.6h2.8V8.9h8.4V6.1h-8.4V.5H8.4v5.6H0v2.8z" clip-rule="evenodd" />
+                                    </g>
+                                  </svg>
+                                  United Kingdom (+44)
+                                </span>
+                              </button>
+                            </li>
+                            <li>
+                              <button type="button" class="smw:inline-flex smw:w-full smw:rounded-md smw:px-3 smw:py-2 smw:text-sm smw:text-default smw:hover:bg-default-100 smw:hover:text-default-900 smw:dark:text-default-400 smw:dark:hover:bg-default-600 smw:dark:hover:text-white" role="menuitem">
+                                <span class="smw:inline-flex smw:items-center">
+                                  <svg class="smw:me-2 smw:h-4 smw:w-4" fill="none" viewBox="0 0 20 15" xmlns="http://www.w3.org/2000/svg">
+                                    <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                    <mask id="a" style="mask-type: luminance" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+                                      <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                    </mask>
+                                    <g mask="url(#a)">
+                                      <path fill="#0A17A7" d="M0 .5h19.6v14H0z" />
+                                      <path fill="#fff" stroke="#fff" stroke-width=".667" d="M0 .167h-.901l.684.586 3.15 2.7v.609L-.194 6.295l-.14.1v1.24l.51-.319L3.83 5.033h.73L7.7 7.276a.488.488 0 00.601-.767L5.467 4.08v-.608l2.987-2.134a.667.667 0 00.28-.543V-.1l-.51.318L4.57 2.5h-.73L.66.229.572.167H0z" />
+                                      <path fill="url(#paint0_linear_374_135177)" fill-rule="evenodd" d="M0 2.833V4.7h3.267v2.133c0 .369.298.667.666.667h.534a.667.667 0 00.666-.667V4.7H8.2a.667.667 0 00.667-.667V3.5a.667.667 0 00-.667-.667H5.133V.5H3.267v2.333H0z" clip-rule="evenodd" />
+                                      <path fill="url(#paint1_linear_374_135177)" fill-rule="evenodd" d="M0 3.3h3.733V.5h.934v2.8H8.4v.933H4.667v2.8h-.934v-2.8H0V3.3z" clip-rule="evenodd" />
+                                      <path fill="#fff" fill-rule="evenodd" d="M4.2 11.933l-.823.433.157-.916-.666-.65.92-.133.412-.834.411.834.92.134-.665.649.157.916-.823-.433zm9.8.7l-.66.194.194-.66-.194-.66.66.193.66-.193-.193.66.193.66-.66-.194zm0-8.866l-.66.193.194-.66-.194-.66.66.193.66-.193-.193.66.193.66-.66-.193zm2.8 2.8l-.66.193.193-.66-.193-.66.66.193.66-.193-.193.66.193.66-.66-.193zm-5.6.933l-.66.193.193-.66-.193-.66.66.194.66-.194-.193.66.193.66-.66-.193zm4.2 1.167l-.33.096.096-.33-.096-.33.33.097.33-.097-.097.33.097.33-.33-.096z" clip-rule="evenodd" />
+                                    </g>
+                                    <defs>
+                                      <linearGradient id="paint0_linear_374_135177" x1="0" x2="0" y1=".5" y2="7.5" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#fff" />
+                                        <stop offset="1" stop-color="#F0F0F0" />
+                                      </linearGradient>
+                                      <linearGradient id="paint1_linear_374_135177" x1="0" x2="0" y1=".5" y2="7.033" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#FF2E3B" />
+                                        <stop offset="1" stop-color="#FC0D1B" />
+                                      </linearGradient>
+                                    </defs>
+                                  </svg>
+                                  Australia (+61)
+                                </span>
+                              </button>
+                            </li>
+                            <li>
+                              <button type="button" class="smw:inline-flex smw:w-full smw:rounded-md smw:px-3 smw:py-2 smw:text-sm smw:text-default smw:hover:bg-default-100 smw:hover:text-default-900 smw:dark:text-default-400 smw:dark:hover:bg-default-600 smw:dark:hover:text-white" role="menuitem">
+                                <span class="smw:inline-flex smw:items-center">
+                                  <svg class="smw:me-2 smw:h-4 smw:w-4" fill="none" viewBox="0 0 20 15">
+                                    <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                    <mask id="a" style="mask-type: luminance" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+                                      <rect width="19.6" height="14" y=".5" fill="#fff" rx="2" />
+                                    </mask>
+                                    <g mask="url(#a)">
+                                      <path fill="#262626" fill-rule="evenodd" d="M0 5.167h19.6V.5H0v4.667z" clip-rule="evenodd" />
+                                      <g filter="url(#filter0_d_374_135180)">
+                                        <path fill="#F01515" fill-rule="evenodd" d="M0 9.833h19.6V5.167H0v4.666z" clip-rule="evenodd" />
+                                      </g>
+                                      <g filter="url(#filter1_d_374_135180)">
+                                        <path fill="#FFD521" fill-rule="evenodd" d="M0 14.5h19.6V9.833H0V14.5z" clip-rule="evenodd" />
+                                      </g>
+                                    </g>
+                                    <defs>
+                                      <filter id="filter0_d_374_135180" width="19.6" height="4.667" x="0" y="5.167" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                        <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                        <feOffset />
+                                        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" />
+                                        <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_374_135180" />
+                                        <feBlend in="SourceGraphic" in2="effect1_dropShadow_374_135180" result="shape" />
+                                      </filter>
+                                      <filter id="filter1_d_374_135180" width="19.6" height="4.667" x="0" y="9.833" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+                                        <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+                                        <feOffset />
+                                        <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0" />
+                                        <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_374_135180" />
+                                        <feBlend in="SourceGraphic" in2="effect1_dropShadow_374_135180" result="shape" />
+                                      </filter>
+                                    </defs>
+                                  </svg>
+                                  Germany (+49)
+                                </span>
+                              </button>
+                            </li>
+                            <li>
+                              <button type="button" class="smw:inline-flex smw:w-full smw:rounded-md smw:px-3 smw:py-2 smw:text-sm smw:text-default smw:hover:bg-default-100 smw:hover:text-default-900 smw:dark:text-default-400 smw:dark:hover:bg-default-600 smw:dark:hover:text-white" role="menuitem">
+                                <span class="smw:inline-flex smw:items-center">
+                                  <svg class="smw:me-2 smw:h-4 smw:w-4" fill="none" viewBox="0 0 20 15">
+                                    <rect width="19.1" height="13.5" x=".25" y=".75" fill="#fff" stroke="#F5F5F5" stroke-width=".5" rx="1.75" />
+                                    <mask id="a" style="mask-type: luminance" width="20" height="15" x="0" y="0" maskUnits="userSpaceOnUse">
+                                      <rect width="19.1" height="13.5" x=".25" y=".75" fill="#fff" stroke="#fff" stroke-width=".5" rx="1.75" />
+                                    </mask>
+                                    <g mask="url(#a)">
+                                      <path fill="#F44653" d="M13.067.5H19.6v14h-6.533z" />
+                                      <path fill="#1035BB" fill-rule="evenodd" d="M0 14.5h6.533V.5H0v14z" clip-rule="evenodd" />
+                                    </g>
+                                  </svg>
+                                  France (+33)
+                                </span>
+                              </button>
+                            </li>
+                          </ul>
+                        </div>
+                        <div class="smw:relative smw:w-full">
+                          <input type="text" id="phone-input" class="smw:focus:border-accent smw:focus:ring-accent smw:dark:focus:border-accent smw:z-20 smw:block smw:w-full smw:rounded-e-lg smw:border smw:border-s-0 smw:border-default-300 smw:bg-default-50 smw:p-2.5 smw:text-sm smw:text-default-900 smw:dark:border-default-600 smw:dark:border-s-default-700 smw:dark:bg-default-700 smw:dark:text-white smw:dark:placeholder:text-default-400" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="123-456-7890" required />
+                        </div>
+                      </div>
+                    </div>
+
+                    <div>
+                      <label for="email" class="smw:mb-2 smw:block smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> Email </label>
+                      <input type="email" id="email" class="smw:focus:border-accent smw:focus:ring-accent smw:dark:focus:border-accent smw:dark:focus:ring-accent smw:block smw:w-full smw:rounded-lg smw:border smw:border-default-300 smw:bg-default-50 smw:p-2.5 smw:text-sm smw:text-default-900 smw:dark:border-default-600 smw:dark:bg-default-700 smw:dark:text-white smw:dark:placeholder:text-default-400" placeholder="name@flowbite.com" required />
+                    </div>
+
+                    <div>
+                      <label for="company_name" class="smw:mb-2 smw:block smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> Company name </label>
+                      <input type="text" id="company_name" class="smw:focus:border-accent smw:focus:ring-accent smw:dark:focus:border-accent smw:dark:focus:ring-accent smw:block smw:w-full smw:rounded-lg smw:border smw:border-default-300 smw:bg-default-50 smw:p-2.5 smw:text-sm smw:text-default-900 smw:dark:border-default-600 smw:dark:bg-default-700 smw:dark:text-white smw:dark:placeholder:text-default-400" placeholder="Flowbite LLC" required />
+                    </div>
+
+                    <div>
+                      <label for="vat_number" class="smw:mb-2 smw:block smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> VAT number </label>
+                      <input type="text" id="vat_number" class="smw:focus:border-accent smw:focus:ring-accent smw:dark:focus:border-accent smw:dark:focus:ring-accent smw:block smw:w-full smw:rounded-lg smw:border smw:border-default-300 smw:bg-default-50 smw:p-2.5 smw:text-sm smw:text-default-900 smw:dark:border-default-600 smw:dark:bg-default-700 smw:dark:text-white smw:dark:placeholder:text-default-400" placeholder="DE42313253" required />
+                    </div>
+
+                    <div class="smw:sm:col-span-2">
+                      <button type="submit" class="smw:hover:text-accent-700 smw:flex smw:w-full smw:items-center smw:justify-center smw:gap-2 smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:px-5 smw:py-2.5 smw:text-sm smw:font-medium smw:text-default-900 smw:hover:bg-default-100 smw:focus:z-10 smw:focus:ring-4 smw:focus:ring-default-100 smw:focus:outline-none smw:dark:border-default-600 smw:dark:bg-default-800 smw:dark:text-default-400 smw:dark:hover:bg-default-700 smw:dark:hover:text-white smw:dark:focus:ring-default-700">
+                        <svg class="smw:h-5 smw:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5" />
+                        </svg>
+                        Add new address
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="smw:mx-auto smw:mt-6 smw:flex-1 smw:space-y-6 smw:w-full">
+              <div class="smw:space-y-4 smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:p-4 smw:shadow-sm smw:sm:p-6 smw:dark:border-default-700 smw:dark:bg-default-800">
+                <p class="smw:text-xl smw:font-semibold smw:text-default-900 smw:dark:text-white">Order summary</p>
+
+                <div class="smw:space-y-4">
+                  <div class="smw:space-y-2">
+                    <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4">
+                      <dt class="smw:text-base smw:font-normal smw:text-default smw:dark:text-default-400">Original price</dt>
+                      <dd class="smw:text-base smw:font-medium smw:text-default-900 smw:dark:text-white">$7,592.00</dd>
+                    </dl>
+
+                    <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4">
+                      <dt class="smw:text-base smw:font-normal smw:text-default smw:dark:text-default-400">Savings</dt>
+                      <dd class="smw:text-base smw:font-medium smw:text-green-600">-$299.00</dd>
+                    </dl>
+
+                    <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4">
+                      <dt class="smw:text-base smw:font-normal smw:text-default smw:dark:text-default-400">Store Pickup</dt>
+                      <dd class="smw:text-base smw:font-medium smw:text-default-900 smw:dark:text-white">$99</dd>
+                    </dl>
+
+                    <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4">
+                      <dt class="smw:text-base smw:font-normal smw:text-default smw:dark:text-default-400">Tax</dt>
+                      <dd class="smw:text-base smw:font-medium smw:text-default-900 smw:dark:text-white">$799</dd>
+                    </dl>
+                  </div>
+
+                  <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4 smw:border-t smw:border-default-200 smw:pt-2 smw:dark:border-default-700">
+                    <dt class="smw:text-base smw:font-bold smw:text-default-900 smw:dark:text-white">Total</dt>
+                    <dd class="smw:text-base smw:font-bold smw:text-default-900 smw:dark:text-white">$8,191.00</dd>
+                  </dl>
+                </div>
+                <div class="smw:flex smw:items-center smw:justify-between smw:gap-4">
+                  <a href="" class="smw:hover:text-accent-700 smw:flex smw:w-full smw:items-center smw:justify-center smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:px-5 smw:py-2.5 smw:text-sm smw:font-medium smw:text-default-900 smw:hover:bg-default-100 smw:focus:z-10 smw:focus:ring-4 smw:focus:ring-default-100 smw:focus:outline-none smw:sm:w-full smw:dark:border-default-600 smw:dark:bg-default-800 smw:dark:text-default-400 smw:dark:hover:bg-default-700 smw:dark:hover:text-white smw:dark:focus:ring-default-700">Return to Shopping</a>
+
+                  <a href="#" class="smw:bg-accent-700 smw:hover:bg-accent-800 smw:focus:ring-accent-300 smw:dark:bg-accent-600 smw:dark:hover:bg-accent-700 smw:dark:focus:ring-accent-800 smw:flex smw:w-full smw:items-center smw:justify-center smw:rounded-lg smw:px-5 smw:py-2.5 smw:text-sm smw:font-medium smw:text-white smw:focus:ring-4 smw:focus:outline-none">Proceed to Payment</a>
+                </div>
+              </div>
+            </div>
+          </main>
+        </div>
+      </div>
+    </section>
+
+    <footer class="smw:bg-white smw:p-8 smw:sm:p-10 smw:lg:py-12 smw:dark:bg-default-800">
+      <div class="smw:mx-auto smw:max-w-screen-xl">
+        <div class="smw:md:flex smw:md:justify-between">
+          <div class="smw:mb-6 smw:md:mb-0">
+            <a href="#" class="smw:flex smw:items-center">
+              <img src="../images/Logo-Black.png" class="smw:mr-3 smw:h-8" alt="FlowBite Logo" />
+            </a>
+          </div>
+          <div class="smw:grid smw:grid-cols-2 smw:gap-8 smw:sm:grid-cols-3 smw:sm:gap-6">
+            <div>
+              <h2 class="smw:mb-6 smw:text-sm smw:font-semibold smw:text-default-900 smw:uppercase smw:dark:text-white">Resources</h2>
+              <ul class="smw:text-default-600 smw:dark:text-default-400">
+                <li class="smw:mb-4">
+                  <a href="#" class="smw:hover:underline">Chroma.js</a>
+                </li>
+                <li>
+                  <a href="#" class="smw:hover:underline">Tailwind CSS</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="smw:mb-6 smw:text-sm smw:font-semibold smw:text-default-900 smw:uppercase smw:dark:text-white">Follow us</h2>
+              <ul class="smw:text-default-600 smw:dark:text-default-400">
+                <li class="smw:mb-4">
+                  <a href="https://github.com/themesberg/flowbite" class="smw:hover:underline">Github</a>
+                </li>
+                <li>
+                  <a href="https://discord.gg/4eeurUVvTy" class="smw:hover:underline">Discord</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h2 class="smw:mb-6 smw:text-sm smw:font-semibold smw:text-default-900 smw:uppercase smw:dark:text-white">Legal</h2>
+              <ul class="smw:text-default-600 smw:dark:text-default-400">
+                <li class="smw:mb-4">
+                  <a href="#" class="smw:hover:underline">Privacy Policy</a>
+                </li>
+                <li>
+                  <a href="#" class="smw:hover:underline">Terms &amp; Conditions</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <hr class="smw:my-6 smw:border-default-200 smw:sm:mx-auto smw:lg:my-8 smw:dark:border-default-700" />
+        <div class="smw:sm:flex smw:sm:items-center smw:sm:justify-between">
+          <span class="smw:text-sm smw:text-default smw:sm:text-center smw:dark:text-default-400">© 2022 <a href="#" class="hover:underline">Example</a>. All Rights Reserved. </span>
+          <div class="smw:mt-4 smw:flex smw:space-x-6 smw:sm:mt-0 smw:sm:justify-center">
+            <a href="#" class="smw:text-default smw:hover:text-default-900 smw:dark:hover:text-white">
+              <svg class="smw:h-5 smw:w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+            </a>
+            <a href="#" class="smw:text-default smw:hover:text-default-900 smw:dark:hover:text-white">
+              <svg class="smw:h-5 smw:w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  fill-rule="evenodd"
+                  d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+            <a href="#" class="smw:text-default smw:hover:text-default-900 smw:dark:hover:text-white">
+              <svg class="smw:h-5 smw:w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" /></svg>
+            </a>
+            <a href="#" class="smw:text-default smw:hover:text-default-900 smw:dark:hover:text-white">
+              <svg class="smw:h-5 smw:w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" /></svg>
+            </a>
+            <a href="#" class="smw:text-default smw:hover:text-default-900 smw:dark:hover:text-white">
+              <svg class="smw:h-5 smw:w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" clip-rule="evenodd" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- All LunaSoft Software Layout Ends here -->
+
+    <script type="module" src="../main.js"></script>
+  </body>
+</html>

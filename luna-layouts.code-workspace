@@ -3,6 +3,9 @@
     {
       "path": ".",
     },
+    {
+      "path": "\\\\wsl.localhost\\Ubuntu\\home\\touhid\\mbackend",
+    },
   ],
   "settings": {
     "liveServer.settings.multiRootWorkspaceName": "luna-layouts",
