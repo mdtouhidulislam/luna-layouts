@@ -288,125 +288,119 @@
           </div>
         </div>
         <!-- Content Grid with Sidebar -->
-        <div class="smw:gap-8 smw:lg:flex">
-          <!-- Content goes here -->
-          <aside id="sidebar" class="smw:hidden smw:h-full smw:w-80 smw:flex-shrink-0 smw:overflow-y-auto smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:p-3 smw:shadow-sm smw:lg:block smw:dark:bg-default-800 smw:dark:border-default-700 smw:text-default-900">
-            <!-- Sidebar content goes here -->
-            <ul class="smw:space-y-2 smw:text-base smw:font-medium smw:dark:text-white">
-              <li>
-                <a href="#" class="smw:flex smw:items-center smw:w-full smw:cursor-pointer smw:rounded-lg smw:px-4 smw:py-2 smw:hover:bg-default-100 smw:hover:text-accent-700 smw:focus:text-accent-700 smw:focus:ring-2 smw:focus:ring-accent-700 smw:focus:outline-none smw:dark:hover:bg-default-600 smw:dark:hover:text-white smw:dark:focus:text-white smw:dark:focus:ring-default"> My Orders </a>
-              </li>
-              <li>
-                <a href="#" class="smw:flex smw:items-center smw:w-full smw:cursor-pointer smw:rounded-lg smw:px-4 smw:py-2 smw:hover:bg-default-100 smw:hover:text-accent-700 smw:focus:text-accent-700 smw:focus:ring-2 smw:focus:ring-accent-700 smw:focus:outline-none smw:dark:hover:bg-default-600 smw:dark:hover:text-white smw:dark:focus:text-white smw:dark:focus:ring-default"> Reviews </a>
-              </li>
-              <li>
-                <a href="#" class="smw:flex smw:items-center smw:w-full smw:cursor-pointer smw:rounded-lg smw:px-4 smw:py-2 smw:hover:bg-default-100 smw:hover:text-accent-700 smw:focus:text-accent-700 smw:focus:ring-2 smw:focus:ring-accent-700 smw:focus:outline-none smw:dark:hover:bg-default-600 smw:dark:hover:text-white smw:dark:focus:text-white smw:dark:focus:ring-default"> Settings </a>
-              </li>
-            </ul>
-          </aside>
-          <main class="smw:w-full">
-            <!--
-            <div x-data="{ products: Array(6).fill(0) }" class="smw:mb-4 smw:grid smw:gap-4 smw:sm:grid-cols-2 smw:md:mb-8 smw:lg:grid-cols-3">
-              <template x-for="(product, index) in products" :key="index"> </template>
-            </div>
-            -->
-            <div class="smw:mx-auto smw:w-full smw:flex-none">
-              <div x-data="{ products: Array(4).fill(0) }" class="smw:space-y-6">
-                <template x-for="(product, index) in products" :key="index">
-                  <!-- Cart Item -->
-                  <div class="smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:p-4 smw:shadow-sm smw:md:p-6 smw:dark:border-default-700 smw:dark:bg-default-800">
-                    <div class="smw:space-y-4 smw:md:flex smw:md:items-center smw:md:justify-between smw:md:gap-6 smw:md:space-y-0">
-                      <a href="#" class="smw:shrink-0 smw:md:order-1">
-                        <img class="smw:h-20 smw:w-20 smw:dark:hidden" src="../images/cart-mini.jpg" alt="imac image" />
-                        <img class="smw:hidden smw:h-20 smw:w-20 smw:dark:block" src="../images/cart-mini.jpg" alt="imac image" />
-                      </a>
+        <div class="smw:mt-6 smw:sm:mt-8 smw:md:gap-6 smw:lg:flex smw:lg:items-start smw:xl:gap-8">
+          <div class="smw:mx-auto smw:w-full smw:flex-none smw:lg:max-w-2xl smw:xl:max-w-4xl">
+            <div x-data="{ products: Array(4).fill(0) }" class="smw:space-y-6">
+              <template x-for="(product, index) in products" :key="index">
+                <div class="smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:p-4 smw:shadow-sm smw:md:p-6 smw:dark:border-default-700 smw:dark:bg-default-800">
+                  <div class="smw:space-y-4 smw:md:flex smw:md:items-center smw:md:justify-between smw:md:gap-6 smw:md:space-y-0">
+                    <a href="#" class="smw:shrink-0 smw:md:order-1">
+                      <img class="smw:h-20 smw:w-20 smw:dark:hidden" src="../images/cart-mini.jpg" alt="imac image" />
+                      <img class="smw:hidden smw:h-20 smw:w-20 smw:dark:block" src="../images/cart-mini.jpg" alt="imac image" />
+                    </a>
 
-                      <label for="counter-input" class="smw:sr-only">Choose quantity:</label>
-                      <div class="smw:flex smw:items-center smw:justify-between smw:md:order-3 smw:md:justify-end">
-                        <div class="smw:flex smw:items-center">
-                          <button type="button" id="decrement-button" data-input-counter-decrement="counter-input" class="smw:inline-flex smw:h-5 smw:w-5 smw:shrink-0 smw:items-center smw:justify-center smw:rounded-md smw:border smw:border-default-300 smw:bg-default-100 smw:hover:bg-default-200 smw:focus:ring-2 smw:focus:ring-default-100 smw:focus:outline-none smw:dark:border-default-600 smw:dark:bg-default-700 smw:dark:hover:bg-default-600 smw:dark:focus:ring-default-700">
-                            <svg class="smw:h-2.5 smw:w-2.5 smw:text-default-900 smw:dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
-                            </svg>
-                          </button>
-                          <input type="text" id="counter-input" data-input-counter class="smw:w-10 smw:shrink-0 smw:border-0 smw:bg-transparent smw:text-center smw:text-sm smw:font-medium smw:text-default-900 smw:focus:ring-0 smw:focus:outline-none smw:dark:text-white" placeholder="" value="2" required />
-                          <button type="button" id="increment-button" data-input-counter-increment="counter-input" class="smw:inline-flex smw:h-5 smw:w-5 smw:shrink-0 smw:items-center smw:justify-center smw:rounded-md smw:border smw:border-default-300 smw:bg-default-100 smw:hover:bg-default-200 smw:focus:ring-2 smw:focus:ring-default-100 smw:focus:outline-none smw:dark:border-default-600 smw:dark:bg-default-700 smw:dark:hover:bg-default-600 smw:dark:focus:ring-default-700">
-                            <svg class="smw:h-2.5 smw:w-2.5 smw:text-default-900 smw:dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
-                            </svg>
-                          </button>
-                        </div>
-                        <div class="smw:text-end smw:md:order-4 smw:md:w-32">
-                          <p class="smw:text-base smw:font-bold smw:text-default-900 smw:dark:text-white">$1,499</p>
-                        </div>
+                    <label for="counter-input" class="smw:sr-only">Choose quantity:</label>
+                    <div class="smw:flex smw:items-center smw:justify-between smw:md:order-3 smw:md:justify-end">
+                      <div class="smw:flex smw:items-center">
+                        <button type="button" id="decrement-button" data-input-counter-decrement="counter-input" class="smw:inline-flex smw:h-5 smw:w-5 smw:shrink-0 smw:items-center smw:justify-center smw:rounded-md smw:border smw:border-default-300 smw:bg-default-100 smw:hover:bg-default-200 smw:focus:ring-2 smw:focus:ring-default-100 smw:focus:outline-none smw:dark:border-default-600 smw:dark:bg-default-700 smw:dark:hover:bg-default-600 smw:dark:focus:ring-default-700">
+                          <svg class="smw:h-2.5 smw:w-2.5 smw:text-default-900 smw:dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
+                          </svg>
+                        </button>
+                        <input type="text" id="counter-input" data-input-counter class="smw:w-10 smw:shrink-0 smw:border-0 smw:bg-transparent smw:text-center smw:text-sm smw:font-medium smw:text-default-900 smw:focus:ring-0 smw:focus:outline-none smw:dark:text-white" placeholder="" value="2" required />
+                        <button type="button" id="increment-button" data-input-counter-increment="counter-input" class="smw:inline-flex smw:h-5 smw:w-5 smw:shrink-0 smw:items-center smw:justify-center smw:rounded-md smw:border smw:border-default-300 smw:bg-default-100 smw:hover:bg-default-200 smw:focus:ring-2 smw:focus:ring-default-100 smw:focus:outline-none smw:dark:border-default-600 smw:dark:bg-default-700 smw:dark:hover:bg-default-600 smw:dark:focus:ring-default-700">
+                          <svg class="smw:h-2.5 smw:w-2.5 smw:text-default-900 smw:dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
+                          </svg>
+                        </button>
                       </div>
+                      <div class="smw:text-end smw:md:order-4 smw:md:w-32">
+                        <p class="smw:text-base smw:font-bold smw:text-default-900 smw:dark:text-white">$1,499</p>
+                      </div>
+                    </div>
 
-                      <div class="smw:w-full smw:min-w-0 smw:flex-1 smw:space-y-4 smw:md:order-2 smw:md:max-w-md">
-                        <a href="#" class="smw:text-base smw:font-medium smw:text-default-900 smw:hover:underline smw:dark:text-white smw:mb-4 smw:inline-block">PC system All in One APPLE iMac (2023) mqrq3ro/a, Apple M3, 24" Retina 4.5K, 8GB, SSD 256GB, 10-core GPU, Keyboard layout INT</a
-                        ><!--Fix:remove:smw:mb-4-->
+                    <div class="smw:w-full smw:min-w-0 smw:flex-1 smw:space-y-4 smw:md:order-2 smw:md:max-w-md">
+                      <a href="#" class="smw:inline-block smw:text-base smw:font-medium smw:text-default-900 smw:hover:underline smw:dark:text-white">PC system All in One APPLE iMac (2023)</a>
 
-                        <div class="smw:flex smw:items-center smw:gap-4">
-                          <button type="button" class="smw:inline-flex smw:items-center smw:text-sm smw:font-medium smw:text-default smw:hover:text-default-900 smw:hover:underline smw:dark:text-default-400 smw:dark:hover:text-white">
-                            <svg class="smw:me-1.5 smw:h-5 smw:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z" />
-                            </svg>
-                            Add to Favorites
-                          </button>
+                      <div class="smw:flex smw:items-center smw:gap-4">
+                        <button type="button" class="smw:inline-flex smw:items-center smw:text-sm smw:font-medium smw:text-default smw:hover:text-default-900 smw:hover:underline smw:dark:text-default-400 smw:dark:hover:text-white">
+                          <svg class="smw:me-1.5 smw:h-5 smw:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z" />
+                          </svg>
+                          Add to Favorites
+                        </button>
 
-                          <button type="button" class="smw:inline-flex smw:items-center smw:text-sm smw:font-medium smw:text-red-600 smw:hover:underline smw:dark:text-red-500">
-                            <svg class="smw:me-1.5 smw:h-5 smw:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
-                            </svg>
-                            Remove
-                          </button>
-                        </div>
+                        <button type="button" class="smw:inline-flex smw:items-center smw:text-sm smw:font-medium smw:text-red-600 smw:hover:underline smw:dark:text-red-500">
+                          <svg class="smw:me-1.5 smw:h-5 smw:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 17.94 6M18 18 6.06 6" />
+                          </svg>
+                          Remove
+                        </button>
                       </div>
                     </div>
                   </div>
-                </template>
-              </div>
+                </div>
+              </template>
             </div>
+          </div>
 
-            <div class="smw:mx-auto smw:mt-6 smw:flex-1 smw:space-y-6 smw:w-full">
-              <div class="smw:space-y-4 smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:p-4 smw:shadow-sm smw:sm:p-6 smw:dark:border-default-700 smw:dark:bg-default-800">
-                <p class="smw:text-xl smw:font-semibold smw:text-default-900 smw:dark:text-white">Order summary</p>
+          <div class="smw:mx-auto smw:mt-6 smw:max-w-4xl smw:flex-1 smw:space-y-6 smw:lg:mt-0 smw:lg:w-full">
+            <div class="smw:space-y-4 smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:p-4 smw:shadow-sm smw:sm:p-6 smw:dark:border-default-700 smw:dark:bg-default-800">
+              <p class="smw:text-xl smw:font-semibold smw:text-default-900 smw:dark:text-white">Order summary</p>
 
-                <div class="smw:space-y-4">
-                  <div class="smw:space-y-2">
-                    <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4">
-                      <dt class="smw:text-base smw:font-normal smw:text-default smw:dark:text-default-400">Original price</dt>
-                      <dd class="smw:text-base smw:font-medium smw:text-default-900 smw:dark:text-white">$7,592.00</dd>
-                    </dl>
+              <div class="space-y-4">
+                <div class="smw:space-y-2">
+                  <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4">
+                    <dt class="smw:text-base smw:font-normal smw:text-default smw:dark:text-default-400">Original price</dt>
+                    <dd class="smw:text-base smw:font-medium smw:text-default-900 smw:dark:text-white">$7,592.00</dd>
+                  </dl>
 
-                    <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4">
-                      <dt class="smw:text-base smw:font-normal smw:text-default smw:dark:text-default-400">Savings</dt>
-                      <dd class="smw:text-base smw:font-medium smw:text-green-600">-$299.00</dd>
-                    </dl>
+                  <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4">
+                    <dt class="smw:text-base smw:font-normal smw:text-default smw:dark:text-default-400">Savings</dt>
+                    <dd class="smw:text-base smw:font-medium smw:text-green-600">-$299.00</dd>
+                  </dl>
 
-                    <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4">
-                      <dt class="smw:text-base smw:font-normal smw:text-default smw:dark:text-default-400">Store Pickup</dt>
-                      <dd class="smw:text-base smw:font-medium smw:text-default-900 smw:dark:text-white">$99</dd>
-                    </dl>
+                  <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4">
+                    <dt class="smw:text-base smw:font-normal smw:text-default smw:dark:text-default-400">Store Pickup</dt>
+                    <dd class="smw:text-base smw:font-medium smw:text-default-900 smw:dark:text-white">$99</dd>
+                  </dl>
 
-                    <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4">
-                      <dt class="smw:text-base smw:font-normal smw:text-default smw:dark:text-default-400">Tax</dt>
-                      <dd class="smw:text-base smw:font-medium smw:text-default-900 smw:dark:text-white">$799</dd>
-                    </dl>
-                  </div>
-
-                  <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4 smw:border-t smw:border-default-200 smw:pt-2 smw:dark:border-default-700">
-                    <dt class="smw:text-base smw:font-bold smw:text-default-900 smw:dark:text-white">Total</dt>
-                    <dd class="smw:text-base smw:font-bold smw:text-default-900 smw:dark:text-white">$8,191.00</dd>
+                  <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4">
+                    <dt class="smw:text-base smw:font-normal smw:text-default smw:dark:text-default-400">Tax</dt>
+                    <dd class="smw:text-base smw:font-medium smw:text-default-900 smw:dark:text-white">$799</dd>
                   </dl>
                 </div>
-                <div class="smw:flex smw:items-center smw:justify-between smw:gap-4">
-                  <a href="" class="smw:hover:text-accent-700 smw:flex smw:w-full smw:items-center smw:justify-center smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:px-5 smw:py-2.5 smw:text-sm smw:font-medium smw:text-default-900 smw:hover:bg-default-100 smw:focus:z-10 smw:focus:ring-4 smw:focus:ring-default-100 smw:focus:outline-none smw:sm:w-full smw:dark:border-default-600 smw:dark:bg-default-800 smw:dark:text-default-400 smw:dark:hover:bg-default-700 smw:dark:hover:text-white smw:dark:focus:ring-default-700">Return to Shopping</a>
 
-                  <a href="#" class="smw:bg-accent-700 smw:hover:bg-accent-800 smw:focus:ring-accent-300 smw:dark:bg-accent-600 smw:dark:hover:bg-accent-700 smw:dark:focus:ring-accent-800 smw:flex smw:w-full smw:items-center smw:justify-center smw:rounded-lg smw:px-5 smw:py-2.5 smw:text-sm smw:font-medium smw:text-white smw:focus:ring-4 smw:focus:outline-none">Proceed to Checkout</a>
-                </div>
+                <dl class="smw:flex smw:items-center smw:justify-between smw:gap-4 smw:border-t smw:border-default-200 smw:pt-2 smw:dark:border-default-700">
+                  <dt class="smw:text-base smw:font-bold smw:text-default-900 smw:dark:text-white">Total</dt>
+                  <dd class="smw:text-base smw:font-bold smw:text-default-900 smw:dark:text-white">$8,191.00</dd>
+                </dl>
+              </div>
+
+              <a href="#" class="smw:bg-accent-700 smw:hover:bg-accent-800 smw:focus:ring-accent-300 smw:dark:bg-accent-600 smw:dark:hover:bg-accent-700 smw:dark:focus:ring-accent-800 smw:flex smw:w-full smw:items-center smw:justify-center smw:rounded-lg smw:px-5 smw:py-2.5 smw:text-sm smw:font-medium smw:text-white smw:focus:ring-4 smw:focus:outline-none">Proceed to Checkout</a>
+
+              <div class="smw:flex smw:items-center smw:justify-center smw:gap-2">
+                <span class="smw:text-sm smw:font-normal smw:text-default smw:dark:text-default-400"> or </span>
+                <a href="#" title="" class="smw:text-accent-700 smw:dark:text-accent smw:inline-flex smw:items-center smw:gap-2 smw:text-sm smw:font-medium smw:underline smw:hover:no-underline">
+                  Continue Shopping
+                  <svg class="smw:h-5 smw:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 12H5m14 0-4 4m4-4-4-4" />
+                  </svg>
+                </a>
               </div>
             </div>
-          </main>
+            <!--
+            <div class="smw:space-y-4 smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:p-4 smw:shadow-sm smw:sm:p-6 smw:dark:border-default-700 smw:dark:bg-default-800">
+              <form class="smw:space-y-4">
+                <div>
+                  <label for="voucher" class="smw:mb-2 smw:block smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white"> Do you have a voucher or gift card? </label>
+                  <input type="text" id="voucher" class="smw:focus:border-accent smw:focus:ring-accent smw:dark:focus:border-accent smw:dark:focus:ring-accent smw:block smw:w-full smw:rounded-lg smw:border smw:border-default-300 smw:bg-default-50 smw:p-2.5 smw:text-sm smw:text-default-900 smw:dark:border-default-600 smw:dark:bg-default-700 smw:dark:text-white smw:dark:placeholder:text-default-400" placeholder="" required />
+                </div>
+                <button type="submit" class="smw:bg-accent-700 smw:hover:bg-accent-800 smw:focus:ring-accent-300 smw:dark:bg-accent-600 smw:dark:hover:bg-accent-700 smw:dark:focus:ring-accent-800 smw:flex smw:w-full smw:items-center smw:justify-center smw:rounded-lg smw:px-5 smw:py-2.5 smw:text-sm smw:font-medium smw:text-white smw:focus:ring-4 smw:focus:outline-none">Apply Code</button>
+              </form>
+            </div>
+            -->
+          </div>
         </div>
       </div>
     </section>

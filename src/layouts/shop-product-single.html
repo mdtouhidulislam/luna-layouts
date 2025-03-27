@@ -278,6 +278,7 @@
             </nav>
             <h2 class="smw:mt-3 smw:text-xl smw:font-semibold smw:text-heading smw:sm:text-2xl smw:dark:text-white">Electronics</h2>
           </div>
+          <!--
           <div class="smw:flex smw:items-center smw:space-x-4">
             <span class="smw:text-sm smw:font-medium smw:text-default smw:dark:text-default-400 smw:flex smw:items-center smw:justify-start smw:sm:justify-center smw:gap-1 smw:w-full smw:sm:w-auto">
               <span class="smw:text-default-900 smw:dark:text-white">72</span>
@@ -293,6 +294,7 @@
               </select>
             </form>
           </div>
+          -->
         </div>
         <!-- Content Grid with Sidebar -->
         <div class="smw:gap-8 smw:lg:flex">
@@ -312,118 +314,63 @@
             </ul>
           </aside>
           <main class="smw:w-full">
-            <div x-data="{ products: Array(6).fill(0) }" class="smw:mb-4 smw:grid smw:gap-4 smw:sm:grid-cols-2 smw:md:mb-8 smw:lg:grid-cols-3">
-              <template x-for="(product, index) in products" :key="index">
-                <!-- Product Card -->
-                <div class="smw:rounded-lg smw:border smw:border-default-200 smw:bg-surface smw:p-6 smw:shadow-sm smw:dark:border-default-700 smw:dark:bg-default-800">
-                  <div class="smw:h-56 smw:w-full">
-                    <a href="#">
-                      <img class="smw:mx-auto smw:h-full smw:dark:hidden" src="../images/product-image.jpg" alt="" />
-                      <img class="smw:mx-auto smw:hidden smw:h-full smw:dark:block" src="../images/product-image.jpg" alt="" />
-                    </a>
-                  </div>
-                  <div class="smw:pt-6">
-                    <div class="smw:mb-3 smw:flex smw:items-center smw:justify-between smw:gap-4">
-                      <div class="smw:flex smw:items-center smw:gap-2">
-                        <div class="smw:flex smw:items-center">
-                          <svg class="smw:h-4 smw:w-4 smw:text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
-                          </svg>
+            <div class="smw:lg:grid smw:lg:grid-cols-2 smw:lg:gap-8 smw:xl:gap-16">
+              <div class="smw:mx-auto smw:max-w-md smw:shrink-0 smw:lg:max-w-lg">
+                <img class="smw:w-full smw:dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg" alt="" />
+                <img class="smw:hidden smw:w-full smw:dark:block" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front-dark.svg" alt="" />
+              </div>
 
-                          <svg class="smw:h-4 smw:w-4 smw:text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
-                          </svg>
+              <div class="smw:mt-6 smw:sm:mt-8 smw:lg:mt-0">
+                <h1 class="smw:text-xl smw:font-semibold smw:text-default-900 smw:sm:text-2xl smw:dark:text-white"> Apple iMac 24" All-In-One Computer, Apple M1, 8GB RAM, 256GB SSD, Mac OS, Pink </h1>
+                <div class="smw:mt-4 smw:sm:flex smw:sm:items-center smw:sm:gap-4">
+                  <p class="smw:text-2xl smw:font-extrabold smw:text-default-900 smw:sm:text-3xl smw:dark:text-white"> $1,249.99 </p>
 
-                          <svg class="smw:h-4 smw:w-4 smw:text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
-                          </svg>
-
-                          <svg class="smw:h-4 smw:w-4 smw:text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
-                          </svg>
-
-                          <svg class="smw:h-4 smw:w-4 smw:text-yellow-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M13.8 4.2a2 2 0 0 0-3.6 0L8.4 8.4l-4.6.3a2 2 0 0 0-1.1 3.5l3.5 3-1 4.4c-.5 1.7 1.4 3 2.9 2.1l3.9-2.3 3.9 2.3c1.5 1 3.4-.4 3-2.1l-1-4.4 3.4-3a2 2 0 0 0-1.1-3.5l-4.6-.3-1.8-4.2Z" />
-                          </svg>
-                        </div>
-
-                        <p class="smw:text-sm smw:font-medium smw:text-default-900 smw:dark:text-white">5.0</p>
-                      </div>
-
-                      <div class="smw:flex smw:items-center smw:justify-end smw:gap-1">
-                        <button type="button" x-bind:data-tooltip-target="'tooltip-add-to-favorites-' + (index + 1)" class="smw:rounded-lg smw:p-2 smw:text-default smw:hover:bg-default-100 smw:hover:text-default-900 smw:dark:text-default-400 smw:dark:hover:bg-default-700 smw:dark:hover:text-white">
-                          <span class="smw:sr-only"> Add to Favorites </span>
-                          <svg class="smw:h-5 smw:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6C6.5 1 1 8 5.8 13l6.2 7 6.2-7C23 8 17.5 1 12 6Z" />
-                          </svg>
-                        </button>
-                        <div x-bind:id="'tooltip-add-to-favorites-' + (index + 1)" role="tooltip" class="tooltip smw:invisible smw:absolute smw:z-10 smw:inline-block smw:rounded-lg smw:bg-default-900 smw:px-3 smw:py-2 smw:text-sm smw:font-medium smw:text-contrast smw:opacity-0 smw:shadow-sm smw:transition-opacity smw:duration-300 smw:dark:bg-default-700" data-popper-placement="top">
-                          Add to favorites
-                          <div class="tooltip-arrow" data-popper-arrow=""></div>
-                        </div>
-                      </div>
+                  <div class="smw:mt-2 smw:flex smw:items-center smw:gap-2 smw:sm:mt-0">
+                    <div class="smw:flex smw:items-center smw:gap-1">
+                      <svg class="smw:h-4 smw:w-4 smw:text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                      </svg>
+                      <svg class="smw:h-4 smw:w-4 smw:text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                      </svg>
+                      <svg class="smw:h-4 smw:w-4 smw:text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                      </svg>
+                      <svg class="smw:h-4 smw:w-4 smw:text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                      </svg>
+                      <svg class="smw:h-4 smw:w-4 smw:text-yellow-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z" />
+                      </svg>
                     </div>
-
-                    <h2 class="smw:text-heading smw:dark:text-white smw:text-lg smw:leading-tight smw:font-semibold">
-                      <a href="#" class="smw:text-heading smw:hover:text-accent-800 smw:dark:text-white smw:dark:hover:text-accent-700">Apple iMac 27", 1TB HDD, Retina 5K Display, M3 Max</a>
-                    </h2>
-
-                    <p class="smw:text-default smw:dark:text-default-400 smw:mt-2 smw:text-base smw:font-normal">This generation has some improvements, including a longer continuous battery life.</p>
-
-                    <div class="smw:mt-4 smw:flex smw:items-center smw:justify-start smw:gap-2">
-                      <p class="smw:text-default-900 smw:text-2xl smw:leading-tight smw:font-extrabold smw:dark:text-white">$79.00</p>
-                      <p class="smw:text-default smw:text-xl smw:leading-tight smw:font-normal smw:line-through smw:dark:text-default-400">$85</p>
-                    </div>
-
-                    <div class="smw:mt-4 smw:flex smw:items-center smw:justify-center smw:gap-4">
-                      <button type="button" class="smw:bg-accent-700 smw:hover:bg-accent-800 smw:focus:ring-accent-300 smw:dark:bg-accent-600 smw:dark:hover:bg-accent-700 smw:dark:focus:ring-accent-800 smw:inline-flex smw:w-full smw:items-center smw:justify-center smw:rounded-lg smw:px-5 smw:py-2.5 smw:text-sm smw:font-medium smw:text-contrast smw:focus:ring-4 smw:focus:outline-none">
-                        <svg class="smw:-ms-2 smw:me-2 smw:h-5 smw:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6" />
-                        </svg>
-                        Add to cart
-                      </button>
-                    </div>
+                    <p class="smw:text-sm smw:leading-none smw:font-medium smw:text-default smw:dark:text-default-400"> (5.0) </p>
+                    <a href="#" class="smw:text-sm smw:leading-none smw:font-medium smw:text-default-900 smw:underline smw:hover:no-underline smw:dark:text-white"> 345 Reviews </a>
                   </div>
                 </div>
-              </template>
-            </div>
-            <!-- Pagination -->
-            <div class="smw:w-full smw:text-center">
-              <nav aria-label="Page navigation">
-                <ul class="smw:inline-flex smw:-space-x-px smw:text-sm">
-                  <li>
-                    <a href="#" class="smw:ms-0 smw:flex smw:h-8 smw:items-center smw:justify-center smw:rounded-s-lg smw:border smw:border-e-0 smw:border-default-200 smw:bg-surface smw:px-3 smw:leading-tight smw:text-default smw:hover:bg-default-100 smw:hover:text-default-700 smw:dark:border-default-700 smw:dark:bg-default-800 smw:dark:text-default-400 smw:dark:hover:bg-default-700 smw:dark:hover:text-white">
-                      <span class="smw:sr-only">Previous</span>
-                      <svg class="smw:h-2.5 smw:w-2.5 smw:rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4" />
-                      </svg>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" class="smw:flex smw:h-8 smw:items-center smw:justify-center smw:border smw:border-default-200 smw:bg-surface smw:px-3 smw:leading-tight smw:text-default smw:hover:bg-default-100 smw:hover:text-default-700 smw:dark:border-default-700 smw:dark:bg-default-800 smw:dark:text-default-400 smw:dark:hover:bg-default-700 smw:dark:hover:text-white">1</a>
-                  </li>
-                  <li>
-                    <a href="#" class="smw:flex smw:h-8 smw:items-center smw:justify-center smw:border smw:border-default-200 smw:bg-surface smw:px-3 smw:leading-tight smw:text-default smw:hover:bg-default-100 smw:hover:text-default-700 smw:dark:border-default-700 smw:dark:bg-default-800 smw:dark:text-default-400 smw:dark:hover:bg-default-700 smw:dark:hover:text-white">2</a>
-                  </li>
-                  <li>
-                    <a href="#" aria-current="page" class="smw:flex smw:h-8 smw:items-center smw:justify-center smw:border smw:border-default-200 smw:bg-accent-50 smw:px-3 smw:text-accent-600 smw:hover:bg-accent-100 smw:hover:text-accent-700 smw:dark:border-default-700 smw:dark:bg-default-700 smw:dark:text-white">3</a>
-                  </li>
-                  <li>
-                    <a href="#" class="smw:flex smw:h-8 smw:items-center smw:justify-center smw:border smw:border-default-200 smw:bg-surface smw:px-3 smw:leading-tight smw:text-default smw:hover:bg-default-100 smw:hover:text-default-700 smw:dark:border-default-700 smw:dark:bg-default-800 smw:dark:text-default-400 smw:dark:hover:bg-default-700 smw:dark:hover:text-white">...</a>
-                  </li>
-                  <li>
-                    <a href="#" class="smw:flex smw:h-8 smw:items-center smw:justify-center smw:border smw:border-default-200 smw:bg-surface smw:px-3 smw:leading-tight smw:text-default smw:hover:bg-default-100 smw:hover:text-default-700 smw:dark:border-default-700 smw:dark:bg-default-800 smw:dark:text-default-400 smw:dark:hover:bg-default-700 smw:dark:hover:text-white">5</a>
-                  </li>
-                  <li>
-                    <a href="#" class="smw:flex smw:h-8 smw:items-center smw:justify-center smw:rounded-e-lg smw:border smw:border-default-200 smw:bg-surface smw:px-3 smw:leading-tight smw:text-default smw:hover:bg-default-100 smw:hover:text-default-700 smw:dark:border-default-700 smw:dark:bg-default-800 smw:dark:text-default-400 smw:dark:hover:bg-default-700 smw:dark:hover:text-white">
-                      <span class="smw:sr-only">Next</span>
-                      <svg class="smw:h-2.5 smw:w-2.5 smw:rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4" />
-                      </svg>
-                    </a>
-                  </li>
-                </ul>
-              </nav>
+
+                <div class="smw:mt-6 smw:sm:mt-8 smw:sm:flex smw:sm:items-center smw:sm:gap-4">
+                  <a href="#" title="" class="smw:hover:text-accent-700 smw:flex smw:items-center smw:justify-center smw:rounded-lg smw:border smw:border-default-200 smw:bg-white smw:px-5 smw:py-2.5 smw:text-sm smw:font-medium smw:text-default-900 smw:hover:bg-default-100 smw:focus:z-10 smw:focus:ring-4 smw:focus:ring-default-100 smw:focus:outline-none smw:dark:border-default-600 smw:dark:bg-default-800 smw:dark:text-default-400 smw:dark:hover:bg-default-700 smw:dark:hover:text-white smw:dark:focus:ring-default-700" role="button">
+                    <svg class="smw:-ms-2 smw:me-2 smw:h-5 smw:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z" />
+                    </svg>
+                    Add to favorites
+                  </a>
+
+                  <a href="#" title="" class="smw:bg-accent-700 smw:hover:bg-accent-800 smw:focus:ring-accent-300 smw:dark:bg-accent-600 smw:dark:hover:bg-accent-700 smw:dark:focus:ring-accent-800 smw:mt-4 smw:flex smw:items-center smw:justify-center smw:rounded-lg smw:px-5 smw:py-2.5 smw:text-sm smw:font-medium smw:text-white smw:focus:ring-4 smw:focus:outline-none smw:sm:mt-0" role="button">
+                    <svg class="smw:-ms-2 smw:me-2 smw:h-5 smw:w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6" />
+                    </svg>
+
+                    Add to cart
+                  </a>
+                </div>
+
+                <hr class="smw:my-6 smw:border-default-200 smw:md:my-8 smw:dark:border-default-800" />
+
+                <p class="smw:mb-6 smw:text-default smw:dark:text-default-400"> Studio quality three mic array for crystal clear calls and voice recordings. Six-speaker sound system for a remarkably robust and high-quality audio experience. Up to 256GB of ultrafast SSD storage. </p>
+
+                <p class="smw:text-default smw:dark:text-default-400"> Two Thunderbolt USB 4 ports and up to two USB 3 ports. Ultrafast Wi-Fi 6 and Bluetooth 5.0 wireless. Color matched Magic Mouse with Magic Keyboard or Magic Keyboard with Touch ID. </p>
+              </div>
             </div>
           </main>
         </div>
